@@ -1,15 +1,15 @@
-package main.controller;
+package application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import main.cordova.PlugmanUtils;
-import main.utils.CustomThread;
-import main.utils.DirectoryWindowsUtils;
-import main.utils.MessageUtils;
-import main.utils.TextUtils;
+import application.cordova.PlugmanUtils;
+import application.utils.CustomThread;
+import application.utils.DirectoryWindowsUtils;
+import application.utils.MessageUtils;
+import application.utils.TextUtils;
 
 /**
  * @author MyPC

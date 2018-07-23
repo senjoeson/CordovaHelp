@@ -1,9 +1,9 @@
-package main.cordova;
+package application.cordova;
 
 
 import java.util.ArrayList;
 
-import main.dos.DosUtils;
+import application.dos.DosUtils;
 
 /**
  * @author MyPC
@@ -27,7 +27,7 @@ public class PlugmanUtils {
         commands.add(version);
         commands.add("--variable");
         commands.add("release");
-    return    DosUtils.runCmdByCd(rootDir, commands);
+        return DosUtils.runCmdByCd(rootDir, commands);
     }
 
 
@@ -41,7 +41,7 @@ public class PlugmanUtils {
         commands.add("add");
         commands.add("--platform_name");
         commands.add(platform);
-        return   DosUtils.runCmdByCd(plugPath, commands);
+        return DosUtils.runCmdByCd(plugPath, commands);
 
     }
 

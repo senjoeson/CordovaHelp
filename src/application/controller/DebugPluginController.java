@@ -1,14 +1,14 @@
-package main.controller;
+package application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import main.cordova.CordovaUtils;
-import main.utils.CustomThread;
-import main.utils.MessageUtils;
-import main.utils.TextUtils;
+import application.cordova.CordovaUtils;
+import application.utils.CustomThread;
+import application.utils.MessageUtils;
+import application.utils.TextUtils;
 
 /**
  * @author MyPC

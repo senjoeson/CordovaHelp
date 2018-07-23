@@ -8,11 +8,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.DebugPluginController">
-    <children>
-        <TextField fx:id="tf_projectPath" layoutX="40.0" layoutY="39.0" prefHeight="35.0" prefWidth="451.0" promptText="填入Cordova项目的绝对路径" text="C:\Users\MyPC\IdeaProjects\TestDemo" />
-        <TextField fx:id="tf_pluginPath" layoutX="40.0" layoutY="109.0" prefHeight="35.0" prefWidth="451.0" promptText="填入插件的绝对路径" text="C:\Users\MyPC\IdeaProjects\TestPlugin" />
-        <Label layoutX="40.0" layoutY="17.0" prefHeight="22.0" prefWidth="97.0" text="Cordova项目路径" />
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DebugPluginController">
+    <children><!--text="C:\Users\MyPC\IdeaProjects\TestDemo"-->
+        <TextField fx:id="tf_projectPath" layoutX="40.0" layoutY="39.0" prefHeight="35.0" prefWidth="451.0" promptText="填入Cordova项目的绝对路径"  />
+        <TextField fx:id="tf_pluginPath" layoutX="40.0" layoutY="109.0" prefHeight="35.0" prefWidth="451.0" promptText="填入插件的绝对路径"  />
+        <Label layoutX="40.0" layoutY="17.0" prefHeight="22.0" prefWidth="97.0" text="Cordova项目路径" /><!--text="C:\Users\MyPC\IdeaProjects\TestPlugin"-->
         <Label layoutX="40.0" layoutY="85.0" prefHeight="22.0" prefWidth="76.0" text="插件目录路径" />
         <TextArea fx:id="displayLog" editable="false" layoutX="37.0" layoutY="181.0" prefHeight="411.0" prefWidth="543.0" promptText="执行结果显示区域:" />
         <CheckBox fx:id="lockproject" layoutX="510.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#lockProjectPathInput" text="是否锁定" />

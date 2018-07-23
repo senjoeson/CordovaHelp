@@ -1,4 +1,4 @@
-package main.controller;
+package application.controller;
 
 import java.io.File;
 
@@ -6,13 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import main.cordova.CordovaUtils;
-import main.dos.DosUtils;
-import main.utils.CustomThread;
-import main.utils.DirectoryWindowsUtils;
-import main.utils.FileUtils;
-import main.utils.MessageUtils;
-import main.utils.TextUtils;
+import application.cordova.CordovaUtils;
+import application.dos.DosUtils;
+import application.utils.CustomThread;
+import application.utils.DirectoryWindowsUtils;
+import application.utils.FileUtils;
+import application.utils.MessageUtils;
+import application.utils.TextUtils;
 
 /**
  * @author MyPC

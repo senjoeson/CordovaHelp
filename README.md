@@ -1,2 +1,3 @@
 # CordovaHelp
 手动制作Cordova项目和插件太麻烦,?那么可以可以看看我这个基于Javafx开发的软件
+此项目为Idea IDE项目,请使用Idea进行导入

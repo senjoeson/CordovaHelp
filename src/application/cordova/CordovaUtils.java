@@ -1,9 +1,9 @@
-package main.cordova;
+package application.cordova;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.dos.DosUtils;
+import application.dos.DosUtils;
 
 /**
  * @author MyPC
