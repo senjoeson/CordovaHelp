@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+         prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE"
+         xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Tab text="在Cordova项目中调试插件">
+        <content>
+            <fx:include source="debug_plugin.fxml"/>
+        </content>
+    </Tab>
+    <Tab text="生成Cordova项目">
+        <content>
+            <fx:include source="generate_module.fxml"/>
+        </content>
+    </Tab>
+    <Tab text="生成Cordova插件">
+        <content>
+            <fx:include source="generate_plugin.fxml"/>
+        </content>
+    </Tab>
+
+</TabPane>

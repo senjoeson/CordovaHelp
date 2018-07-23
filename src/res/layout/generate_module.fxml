@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ModuleController">
+    <children>
+        <TextField fx:id="parentDir" layoutX="32.0" layoutY="54.0" prefHeight="45.0" prefWidth="615.0" promptText="选择一个根目录(作为生成cordova项目的路径)" text="C:\Users\MyPC\IdeaProjects" />
+        <Label layoutX="35.0" layoutY="31.0" text="设置项目根目录" />
+        <Button layoutX="723.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#setParentDir" prefHeight="45.0" prefWidth="116.0" text="设置根目录" />
+        <Label layoutX="36.0" layoutY="123.0" prefHeight="28.0" prefWidth="174.0" text="设置Cordova项目名称:(必填)" />
+        <Label layoutX="262.0" layoutY="125.0" prefHeight="28.0" prefWidth="95.0" text="设置包名:(必填)" />
+        <Label layoutX="479.0" layoutY="130.0" text="设置版本号:(选填)" />
+        <TextField fx:id="modulename" layoutX="36.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：Test" text="TestDemo" />
+        <TextField fx:id="versionname" layoutX="479.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：1.0.0" text="1.0.0" />
+        <TextField fx:id="packagename" layoutX="262.0" layoutY="160.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：com.senjoeson.test" text="com.senjoeson.test" />
+        <TextArea  fx:id="displayLog" editable="false" layoutX="35.0" layoutY="249.0" prefHeight="457.0" prefWidth="615.0" promptText="日志输出区域" />
+        <Label layoutX="35.0" layoutY="215.0" prefHeight="28.0" prefWidth="84.0" text="日志输出区域:" />
+        <Button layoutX="717.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#generateModule" prefHeight="45.0" prefWidth="116.0" text="点击生成项目" />
+        <Label alignment="CENTER" layoutX="673.0" layoutY="129.0" prefHeight="90.0" prefWidth="167.0" text="警告:点击生成项目时,如果当前已经存在项目,则会删除已存在的项目, 重新生成新项目" textFill="#d31717" wrapText="true" />
+        <Button layoutX="717.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#addPlatform" prefHeight="45.0" prefWidth="116.0" text="为项目添加平台" />
+        <ProgressIndicator fx:id="mProgressIndicator" layoutX="295.0" layoutY="445.0" prefHeight="65.0" prefWidth="95.0" visible="false" />
+        <Button layoutX="717.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#testProject" prefHeight="45.0" prefWidth="116.0" text="测试项目" />
+        <Button layoutX="717.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#stopRunAnyOrder" prefHeight="45.0" prefWidth="116.0" text="终止任何命令" />
+    </children>
+</Pane>
