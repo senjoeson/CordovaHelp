@@ -1,15 +1,14 @@
 package application.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import application.cordova.PlugmanUtils;
 import application.utils.CustomThread;
 import application.utils.DirectoryWindowsUtils;
 import application.utils.MessageUtils;
 import application.utils.TextUtils;
+import javafx.fxml.FXML;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * @author MyPC
@@ -37,12 +36,13 @@ public class PluginController {
         }
     }
 
-    public void setRootPath(MouseEvent mouseEvent) {
+    @FXML
+    public void setRootPath() {
         pluginDir = DirectoryWindowsUtils.showDirectoryWindow("选择一个目录来作为插件生成根路径");
     }
 
-    public void generatePlugin(MouseEvent mouseEvent) {
-
+    @FXML
+    public void generatePlugin() {
         if (TextUtils.isEmpty(Tf_pluginDir, Tf_pluginname)) {
             MessageUtils.showMessage("插件根目录或者插件名称不能为空");
             return;
@@ -76,11 +76,11 @@ public class PluginController {
 
     @FXML
     public void testPlugin() {
-            new CustomThread() {
-                @Override
-                protected void reallyRun() {
+        new CustomThread() {
+            @Override
+            protected void reallyRun() {
 
-                }
-            }.start();
+            }
+        }.start();
     }
 }

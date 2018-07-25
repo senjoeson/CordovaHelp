@@ -66,12 +66,11 @@ public class ModuleController {
     @FXML
     public void generateModule() {
         mProgressIndicator.setVisible(true);
-        if (!TextUtils.isEmpty(parentDir)) {
+        if (TextUtils.isEmpty(parentDir)) {
             MessageUtils.showMessage("根目录不能为空!");
             return;
         }
-        boolean notNull = TextUtils.isEmpty(modulename, packagename);
-        if (!notNull) {
+        if (TextUtils.isEmpty(modulename, packagename)) {
             MessageUtils.showMessage("项目名称或包名不能为空!");
         } else {
             String moduleName = modulename.getText();
