@@ -69,6 +69,7 @@ public class PluginController {
             @Override
             protected void reallyRun() {
                 String result = PlugmanUtils.addPlatform(getPluginPath(), "android");
+                //然后写入一个package.json
                 displayLog.setText("添加插件已执行\n" + result);
             }
         }.start();
