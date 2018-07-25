@@ -1,3 +1,4 @@
+import application.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,7 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("res/layout/main.fxml"));
-        primaryStage.setTitle("插件制作工具v1.0");
+        primaryStage.setTitle(Config.APP_NAME+Config.APP_VERSION);
         //Bounds layoutBounds = root.getLayoutBounds();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);

@@ -17,8 +17,13 @@ import application.bean.PackageJson;
 public class WriteUtils {
     //需要配置的 packagename  version  description  enter point
 
-
-    public static void writeFile(String fileName, PackageJson packageJson) throws IOException {
+    /**
+     * 给插件生成一个package.json
+     *
+     * @param fileName    文件名
+     * @param packageJson 写入内容
+     */
+    public static void writeFile(String fileName, PackageJson packageJson) {
         try {
             FileWriter fileWriter = new FileWriter(new File(fileName));
             Gson gson = new Gson();
@@ -26,8 +31,32 @@ public class WriteUtils {
             fileWriter.write(json);
             fileWriter.close();
         } catch (IOException e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
+    }
+
+    /**
+     * @param file         写入的文件
+     * @param writeContent 写入的内容
+     * @return 执行是否成功
+     * @throws IOException
+     */
+    public static boolean writeFile(File file, String writeContent) {
+        if (file != null) {
+            try {
+                FileWriter fileWriter = new FileWriter(file);
+                fileWriter.write(writeContent);
+                fileWriter.close();
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+
+            }
+        } else {
+            return false;
+        }
+
 
     }
 
@@ -42,7 +71,7 @@ public class WriteUtils {
      * license : ISC
      */
     public static void main(String[] args) {
-        String path="C:\\Users\\MyPC\\IdeaProjects\\TestPluginxxx\\package.json";
+        String path = "C:\\Users\\senjoeson\\Desktop\\plugins\\package.json";
         PackageJson packageJson = new PackageJson();
         packageJson.setName("KayakDevicePlugin");
         packageJson.setVersion("1.0.0");
@@ -60,10 +89,9 @@ public class WriteUtils {
         packageJson.setKeywords(list);
         packageJson.setAuthor("xmzhang");
         packageJson.setLicense("ISC");
-        try {
-            writeFile(path,packageJson);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        writeFile(path, packageJson);
+
+
     }
 }

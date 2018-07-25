@@ -3,7 +3,9 @@ package application.controller;
 import application.cordova.PlugmanUtils;
 import application.utils.CustomThread;
 import application.utils.DirectoryWindowsUtils;
+import application.utils.FileUtils;
 import application.utils.MessageUtils;
+import application.utils.PathUtils;
 import application.utils.TextUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
@@ -26,6 +28,8 @@ public class PluginController {
 
     private String pluginDir;
     private String pluginName;
+    //暂时所有的平台默认是android
+    private String platform;
 
 
     public String getPluginPath() {
@@ -57,7 +61,11 @@ public class PluginController {
             @Override
             protected void reallyRun() {
                 String result = PlugmanUtils.create(pluginDir, pluginName, packagename.getText(), versionname.getText());
-                displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
+                if (FileUtils.fileExist(getPluginPath())) {
+                    displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
+                } else {
+                    displayLog.setText("插件生成失败\t" + result);
+                }
             }
         }.start();
 
@@ -70,7 +78,11 @@ public class PluginController {
             protected void reallyRun() {
                 String result = PlugmanUtils.addPlatform(getPluginPath(), "android");
                 //然后写入一个package.json
-                displayLog.setText("添加插件已执行\n" + result);
+                if (FileUtils.fileExist(PathUtils.getSrcPath(getPluginPath(), "android"))) {
+                    displayLog.setText("插件添加平台已经执行\n" + result);
+                } else {
+                    displayLog.setText("插件生成失败\t" + result);
+                }
             }
         }.start();
     }
