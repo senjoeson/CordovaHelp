@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.LogUtils;
 import application.cordova.PlugmanUtils;
 import application.utils.CustomThread;
 import application.utils.DirectoryWindowsUtils;
@@ -42,6 +43,7 @@ public class PluginController {
 
     @FXML
     public void setRootPath() {
+        //LogUtils.info("设置插件的路径");
         pluginDir = DirectoryWindowsUtils.showDirectoryWindow("选择一个目录来作为插件生成根路径");
     }
 
@@ -63,6 +65,8 @@ public class PluginController {
                 String result = PlugmanUtils.create(pluginDir, pluginName, packagename.getText(), versionname.getText());
                 if (FileUtils.fileExist(getPluginPath())) {
                     displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
+                    PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
+                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成成功");
                 } else {
                     displayLog.setText("插件生成失败\t" + result);
                 }
@@ -80,8 +84,9 @@ public class PluginController {
                 //然后写入一个package.json
                 if (FileUtils.fileExist(PathUtils.getSrcPath(getPluginPath(), "android"))) {
                     displayLog.setText("插件添加平台已经执行\n" + result);
+
                 } else {
-                    displayLog.setText("插件生成失败\t" + result);
+                    displayLog.setText("插件添加平台生成失败\t" + result);
                 }
             }
         }.start();
@@ -89,11 +94,6 @@ public class PluginController {
 
     @FXML
     public void testPlugin() {
-        new CustomThread() {
-            @Override
-            protected void reallyRun() {
-
-            }
-        }.start();
+        LogUtils.d("暂时不实现");
     }
 }

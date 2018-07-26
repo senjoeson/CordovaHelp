@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import application.bean.PackageJson;
 
@@ -23,15 +22,21 @@ public class WriteUtils {
      * @param fileName    文件名
      * @param packageJson 写入内容
      */
-    public static void writeFile(String fileName, PackageJson packageJson) {
+    public static boolean writeFile(String fileName, PackageJson packageJson) {
         try {
             FileWriter fileWriter = new FileWriter(new File(fileName));
             Gson gson = new Gson();
             String json = gson.toJson(packageJson);
             fileWriter.write(json);
             fileWriter.close();
+            if(FileUtils.fileExist(fileName)){
+                return true;
+            }else{
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -51,7 +56,6 @@ public class WriteUtils {
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
-
             }
         } else {
             return false;
@@ -71,12 +75,12 @@ public class WriteUtils {
      * license : ISC
      */
     public static void main(String[] args) {
-        String path = "C:\\Users\\senjoeson\\Desktop\\plugins\\package.json";
+       /* String path = "C:\\Users\\senjoeson\\Desktop\\plugins\\package.json";
         PackageJson packageJson = new PackageJson();
         packageJson.setName("KayakDevicePlugin");
         packageJson.setVersion("1.0.0");
         packageJson.setDescription("com.kayak.plugin.deviceplugin");
-        PackageJson.CordovaBean cordovaBean = new PackageJson.CordovaBean();
+      //  PackageJson.CordovaBean cordovaBean = new PackageJson.CordovaBean();
         cordovaBean.setId("com.kayak.plugin.deviceplugin");
         cordovaBean.setPlatforms(null);
         packageJson.setCordova(cordovaBean);
@@ -90,7 +94,7 @@ public class WriteUtils {
         packageJson.setAuthor("xmzhang");
         packageJson.setLicense("ISC");
 
-        writeFile(path, packageJson);
+        writeFile(path, packageJson);*/
 
 
     }

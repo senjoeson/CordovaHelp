@@ -16,10 +16,10 @@
             <fx:include source="generate_module.fxml"/>
         </content>
     </Tab>
-    <Tab text="生成Cordova插件">
-        <content>
-            <fx:include source="generate_plugin.fxml"/>
-        </content>
-    </Tab>
+        <Tab text="生成Cordova插件">
+            <content>
+                <fx:include source="generate_plugin.fxml"/>
+            </content>
+        </Tab>
 
 </TabPane>

@@ -2,17 +2,16 @@ package application.controller;
 
 import java.io.File;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import application.cordova.CordovaUtils;
-import application.dos.DosUtils;
 import application.utils.CustomThread;
 import application.utils.DirectoryWindowsUtils;
 import application.utils.FileUtils;
 import application.utils.MessageUtils;
 import application.utils.TextUtils;
+import javafx.fxml.FXML;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * @author MyPC
@@ -105,8 +104,6 @@ public class ModuleController {
 
         }
 
-
-        //  displayLog.setText(ls);
     }
 
 
@@ -125,7 +122,7 @@ public class ModuleController {
             @Override
             protected void reallyRun() {
                 String result = CordovaUtils.addPlatform(getModulePath(), "android");
-                displayLog.setText(displayLog.getText() + "\n" + result);
+                displayLog.setText( result);
                 mProgressIndicator.setVisible(false);
             }
         };
@@ -156,7 +153,7 @@ public class ModuleController {
             protected void reallyRun() {
                 mProgressIndicator.setVisible(true);
                 String result = CordovaUtils.runAndroid("C:\\Users\\MyPC\\IdeaProjects\\TestDemo", "android");
-                displayLog.setText(displayLog.getText() + "\n" + result);
+                displayLog.setText( result);
                 mProgressIndicator.setVisible(false);
             }
         };
@@ -166,8 +163,8 @@ public class ModuleController {
 
     @FXML
     public void stopRunAnyOrder() {
-        mThread.stopTask();
-        String result = DosUtils.stopMyOrder();
-        displayLog.setText(displayLog.getText() + "\n" + result);
+        //mThread.stopTask();
+       // String result = DosUtils.stopMyOrder();
+        //displayLog.setText(displayLog.getText() + "\n" + result);
     }
 }

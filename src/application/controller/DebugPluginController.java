@@ -1,14 +1,14 @@
 package application.controller;
 
+import application.cordova.CordovaUtils;
+import application.utils.CustomThread;
+import application.utils.MessageUtils;
+import application.utils.TextUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import application.cordova.CordovaUtils;
-import application.utils.CustomThread;
-import application.utils.MessageUtils;
-import application.utils.TextUtils;
 
 /**
  * @author MyPC
@@ -102,5 +102,19 @@ public class DebugPluginController {
 
     }
 
-
+    @FXML
+    public void showPluginList() {
+        //判断是否设置了Cordova项目
+        if(TextUtils.isEmpty(projectPath)){
+            MessageUtils.showMessage("请先设置一个Cordova项目路径,然后重试");
+            return;
+        }
+        new CustomThread() {
+            @Override
+            protected void reallyRun() {
+                String result = CordovaUtils.showPluginList();
+                displayLog.setText(result);
+            }
+        }.start();
+    }
 }

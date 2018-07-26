@@ -67,17 +67,16 @@ public class FileUtils {
     }
 
     /**
-     * 判断文件是否存在并是有数据的
+     * 判断文件是否存在并是有数据的<检查执行命令是否已完成>
      *
      * @param path 文件路径
      * @return 判断文件是否存在并是有数据的
      */
     public static boolean fileExist(String path) {
         File file = new File(path);
-        if (file.exists() && file.isDirectory()) {
+        if (file.isDirectory()) {
             File[] files = file.listFiles();
             if (files != null) {
-
                 for (File aFile : files) {
                     if (aFile.length() > 0) {
                         return true;
@@ -85,7 +84,9 @@ public class FileUtils {
                         return false;
                     }
                 }
-            } else {
+            } else if(file.isFile()&&file.length()>0){
+                return true;
+            }else {
                 return false;
             }
         } else {

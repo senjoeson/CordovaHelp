@@ -1,3 +1,4 @@
+import application.LogUtils;
 import application.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,23 +14,23 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
     public void init() throws Exception {
         Thread.setDefaultUncaughtExceptionHandler(this);
         super.init();
-
+        LogUtils.d("程序入口初始化");
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("res/layout/main.fxml"));
-        primaryStage.setTitle(Config.APP_NAME+Config.APP_VERSION);
+        primaryStage.setTitle(Config.APP_NAME + Config.APP_VERSION);
         //Bounds layoutBounds = root.getLayoutBounds();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 900, 800));
+        primaryStage.setScene(new Scene(root, 820, 760));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        launch(args );
+        launch(args);
 
 
     }

@@ -28,20 +28,6 @@ public class CordovaUtils {
         return DosUtils.runCmd(commands);
     }
 
-    /**
-
-     * @param moduleName  项目名称
-     * @param packageName 包名
-     * @return 拿到执行命令
-    public static List<String> createCordova(String rootPath, String moduleName, String packageName) {
-    ArrayList<String> commands = new ArrayList<String>();
-    commands.add("C:\\Users\\MyPC\\AppData\\Roaming\\npm\\node_modules\\cordova\\bin\\cordova.cmd");
-    commands.add("create");
-    commands.add(rootPath + "\\" + moduleName);
-    commands.add(packageName);
-    return commands;
-    }*/
-
 
     /**
      * 添加平台
@@ -78,8 +64,6 @@ public class CordovaUtils {
 
     /**
      * 暂时不对外提供
-     *
-     * @return
      */
     private static String stopAllOrder() {
         ArrayList<String> commands = new ArrayList<>();
@@ -87,7 +71,9 @@ public class CordovaUtils {
         return DosUtils.runCmd(commands);
     }
 
-
+    /**
+     * 显示当前Cordova项目的插件列表
+     */
     public static String showPluginList() {
         ArrayList<String> commands = new ArrayList<>();
         commands.add("cordova.cmd");

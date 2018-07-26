@@ -27,7 +27,7 @@ public class PackageJson {
     private RepositoryBean repository;
     private String author;
     private String license;
-    private List<String> keywords;
+    private String keywords;
 
     public String getName() {
         return name;
@@ -85,11 +85,11 @@ public class PackageJson {
         this.license = license;
     }
 
-    public List<String> getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
 
@@ -101,6 +101,11 @@ public class PackageJson {
 
         private String id;
         private List<?> platforms;
+
+        public CordovaBean(String id, List<?> platforms) {
+            this.id = id;
+            this.platforms = platforms;
+        }
 
         public String getId() {
             return id;
@@ -127,6 +132,11 @@ public class PackageJson {
 
         private String type;
         private String url;
+
+        public RepositoryBean(String type, String url) {
+            this.type = type;
+            this.url = url;
+        }
 
         public String getType() {
             return type;

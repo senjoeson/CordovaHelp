@@ -1,9 +1,12 @@
 package application.cordova;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
+import application.bean.PackageJson;
 import application.dos.DosUtils;
+import application.utils.WriteUtils;
 
 /**
  * @author MyPC
@@ -59,24 +62,23 @@ public class PlugmanUtils {
     }
 
     /**
-     * plugman createpackagejson <directory>
-     * 暂时不对外提供,命令还有待完善
+     * plugman createpackagejson
+     * 由于通过DOS命令方式没有找到更好的解决方案,通过IO流写入比较靠谱
+     * package.json一般用于对项目的解释
      */
-    private static void createPackageJson(String plugPath) {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("plugman.cmd");
-        commands.add("createpackagejson");
-        commands.add(plugPath);
-        commands.add("\n");
-        commands.add("com.senjoeson.test");
-        commands.add("\n");
-        commands.add("1.0.0");
-        commands.add("\n");
-        commands.add("\n");
-        commands.add("\n");
-        commands.add("\n");
-        commands.add(plugPath);
-        DosUtils.runCmdByCd(plugPath, commands);
+    public static boolean createPackageJson(String pluginPath, String pluginName,
+                                            String version, String packageName) {
+        String generationFileName = pluginPath + File.separator + "package.json";
+        PackageJson packageJson = new PackageJson();
+        packageJson.setName(pluginName);
+        packageJson.setVersion(version);
+        packageJson.setDescription("none");
+        packageJson.setCordova(new PackageJson.CordovaBean(packageName, null));
+        packageJson.setRepository(null);
+        packageJson.setLicense("ISC");
+        packageJson.setAuthor("All copyRight By SENJOESON");
+        return WriteUtils.writeFile(generationFileName, packageJson);
     }
+
 
 }
