@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.LogUtils;
+import application.utils.LogUtils;
 import application.cordova.PlugmanUtils;
 import application.utils.CustomThread;
 import application.utils.DirectoryWindowsUtils;
@@ -65,8 +65,8 @@ public class PluginController {
                 String result = PlugmanUtils.create(pluginDir, pluginName, packagename.getText(), versionname.getText());
                 if (FileUtils.fileExist(getPluginPath())) {
                     displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
-                    PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
-                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成成功");
+                    boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
+                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成"+(packageJson?"成功":"失败"));
                 } else {
                     displayLog.setText("插件生成失败\t" + result);
                 }

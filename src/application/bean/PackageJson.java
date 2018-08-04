@@ -10,14 +10,15 @@ import java.util.List;
 public class PackageJson {
 
     /**
-     * name : KayakDevicePlugin
-     * version : 1.0.0
-     * description : 设备信息
-     * cordova : {"id":"com.kayak.plugin.deviceplugin","platforms":[]}
-     * repository : {"type":"git","url":"git@10.5.0.182:kayakplug/KayakDevicePlugin.git"}
-     * keywords : ["ecosystem:cordova"]
-     * author : xmzhang
-     * license : ISC
+     * name : cordova-plugin-themeablebrowser
+     * version : 0.2.17
+     * description : Cordova ThemeableBrowser Plugin
+     * cordova : {"id":"cordova-plugin-themeablebrowser","platforms":["android","amazon-fireos","ubuntu","ios","wp7","wp8","windows8","windows","firefoxos"]}
+     * repository : {"type":"git","url":"https://github.com/initialxy/cordova-plugin-themeablebrowser"}
+     * keywords : ["cordova","in","app","browser","themeablebrowser","ecosystem:cordova","cordova-android","cordova-ios"]
+     * engines : [{"name":"cordova","version":">=3.1.0"}]
+     * author : Apache Software Foundation
+     * license : Apache 2.0
      */
 
     private String name;
@@ -27,7 +28,8 @@ public class PackageJson {
     private RepositoryBean repository;
     private String author;
     private String license;
-    private String keywords;
+    private List<String> keywords;
+    private List<EnginesBean> engines;
 
     public String getName() {
         return name;
@@ -85,24 +87,32 @@ public class PackageJson {
         this.license = license;
     }
 
-    public String getKeywords() {
+    public List<String> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(String keywords) {
+    public void setKeywords(List<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public List<EnginesBean> getEngines() {
+        return engines;
+    }
+
+    public void setEngines(List<EnginesBean> engines) {
+        this.engines = engines;
     }
 
     public static class CordovaBean {
         /**
-         * id : com.kayak.plugin.deviceplugin
-         * platforms : []
+         * id : cordova-plugin-themeablebrowser
+         * platforms : ["android","amazon-fireos","ubuntu","ios","wp7","wp8","windows8","windows","firefoxos"]
          */
 
         private String id;
-        private List<?> platforms;
+        private List<String> platforms;
 
-        public CordovaBean(String id, List<?> platforms) {
+        public CordovaBean(String id, List<String> platforms) {
             this.id = id;
             this.platforms = platforms;
         }
@@ -115,11 +125,11 @@ public class PackageJson {
             this.id = id;
         }
 
-        public List<?> getPlatforms() {
+        public List<String> getPlatforms() {
             return platforms;
         }
 
-        public void setPlatforms(List<?> platforms) {
+        public void setPlatforms(List<String> platforms) {
             this.platforms = platforms;
         }
     }
@@ -127,16 +137,11 @@ public class PackageJson {
     public static class RepositoryBean {
         /**
          * type : git
-         * url : git@10.5.0.182:kayakplug/KayakDevicePlugin.git
+         * url : https://github.com/initialxy/cordova-plugin-themeablebrowser
          */
 
         private String type;
         private String url;
-
-        public RepositoryBean(String type, String url) {
-            this.type = type;
-            this.url = url;
-        }
 
         public String getType() {
             return type;
@@ -152,6 +157,32 @@ public class PackageJson {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+    }
+
+    public static class EnginesBean {
+        /**
+         * name : cordova
+         * version : >=3.1.0
+         */
+
+        private String name;
+        private String version;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
         }
     }
 }

@@ -62,33 +62,44 @@ public class CordovaUtils {
 
     }
 
-    /**
-     * 暂时不对外提供
-     */
-    private static String stopAllOrder() {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("pause");
-        return DosUtils.runCmd(commands);
-    }
+
 
     /**
      * 显示当前Cordova项目的插件列表
      */
-    public static String showPluginList() {
+    public static String showPluginList(String projectPath) {
         ArrayList<String> commands = new ArrayList<>();
         commands.add("cordova.cmd");
         commands.add("plugin");
         commands.add("list");
-        return DosUtils.runCmd(commands);
+        return DosUtils.runCmdByCd(projectPath,commands);
     }
 
-
-    public static String addPlugin(String projectPath, String pluginPaht) {
+    /**
+     * 为平台添加插件
+     * @param projectPath 项目路径
+     * @param pluginPath 插件路径
+     */
+    public static String addPlugin(String projectPath, String pluginPath) {
         ArrayList<String> commands = new ArrayList<>();
         commands.add("cordova.cmd");
         commands.add("plugin");
         commands.add("add");
-        commands.add(pluginPaht);
+        commands.add(pluginPath);
+        return DosUtils.runCmdByCd(projectPath,commands);
+    }
+
+    /**
+     * 移除插件
+     * @param projectPath 项目路径
+     * @param pluginPackage 插件路径
+     */
+    public static String rmPlugin(String projectPath, String pluginPackage) {
+        ArrayList<String> commands = new ArrayList<>();
+        commands.add("cordova.cmd");
+        commands.add("plugin");
+        commands.add("remove");
+        commands.add(pluginPackage);
         return DosUtils.runCmdByCd(projectPath,commands);
     }
 }

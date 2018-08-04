@@ -1,4 +1,7 @@
-import application.LogUtils;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import application.utils.LogUtils;
 import application.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +13,15 @@ import javafx.stage.Stage;
 public class Main extends Application implements Thread.UncaughtExceptionHandler {
     private String[] classNameFilters = new String[]{"com.sun", "java."};       //过滤系统的类错误
 
+
+
     @Override
     public void init() throws Exception {
         Thread.setDefaultUncaughtExceptionHandler(this);
         super.init();
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        LogUtils.d("--------" + dateFormat.format(date) + "---------");
         LogUtils.d("程序入口初始化");
     }
 
@@ -30,8 +38,8 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
 
 
     public static void main(String[] args) {
-        launch(args);
 
+        launch(args);
 
     }
 

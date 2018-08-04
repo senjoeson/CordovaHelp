@@ -25,7 +25,7 @@
         <CheckBox fx:id="lockplugin" layoutX="510.0" layoutY="119.0" mnemonicParsing="false"
                   onMouseClicked="#lockPluginPathInput" text="是否锁定"/>
         <Button layoutX="655.0" layoutY="262.0" mnemonicParsing="false"
-                onMouseClicked="#plugin2project" prefHeight="35.0" prefWidth="142.0"
+                onMouseClicked="#addPlugin2project" prefHeight="35.0" prefWidth="142.0"
                 text="将插件添加到项目"/>
         <Button layoutX="655.0" layoutY="343.0" mnemonicParsing="false"
                 onMouseClicked="#buildProject" prefHeight="35.0" prefWidth="142.0"
@@ -37,5 +37,8 @@
                            visible="false"/>
         <Button layoutX="652.0" layoutY="424.0" mnemonicParsing="false" prefHeight="35.0"
                 prefWidth="142.0" text="插件列表显示" onMouseClicked="#showPluginList"/>
+
+        <Button layoutX="652.0" layoutY="520.0" mnemonicParsing="false" prefHeight="35.0"
+                prefWidth="142.0" text="重新添加插件" onMouseClicked="#replugin"/>
     </children>
 </AnchorPane>
