@@ -1,15 +1,17 @@
-package main.controller;
+package application.controller;
 
+import application.utils.LogUtils;
+import application.cordova.PlugmanUtils;
+import application.utils.CustomThread;
+import application.utils.DirectoryWindowsUtils;
+import application.utils.FileUtils;
+import application.utils.MessageUtils;
+import application.utils.PathUtils;
+import application.utils.TextUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import main.cordova.PlugmanUtils;
-import main.utils.CustomThread;
-import main.utils.DirectoryWindowsUtils;
-import main.utils.MessageUtils;
-import main.utils.TextUtils;
 
 /**
  * @author MyPC
@@ -27,6 +29,8 @@ public class PluginController {
 
     private String pluginDir;
     private String pluginName;
+    //暂时所有的平台默认是android
+    private String platform;
 
 
     public String getPluginPath() {
@@ -37,12 +41,14 @@ public class PluginController {
         }
     }
 
-    public void setRootPath(MouseEvent mouseEvent) {
+    @FXML
+    public void setRootPath() {
+        //LogUtils.info("设置插件的路径");
         pluginDir = DirectoryWindowsUtils.showDirectoryWindow("选择一个目录来作为插件生成根路径");
     }
 
-    public void generatePlugin(MouseEvent mouseEvent) {
-
+    @FXML
+    public void generatePlugin() {
         if (TextUtils.isEmpty(Tf_pluginDir, Tf_pluginname)) {
             MessageUtils.showMessage("插件根目录或者插件名称不能为空");
             return;
@@ -57,7 +63,13 @@ public class PluginController {
             @Override
             protected void reallyRun() {
                 String result = PlugmanUtils.create(pluginDir, pluginName, packagename.getText(), versionname.getText());
-                displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
+                if (FileUtils.fileExist(getPluginPath())) {
+                    displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
+                    boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
+                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成"+(packageJson?"成功":"失败"));
+                } else {
+                    displayLog.setText("插件生成失败\t" + result);
+                }
             }
         }.start();
 
@@ -69,18 +81,19 @@ public class PluginController {
             @Override
             protected void reallyRun() {
                 String result = PlugmanUtils.addPlatform(getPluginPath(), "android");
-                displayLog.setText("添加插件已执行\n" + result);
+                //然后写入一个package.json
+                if (FileUtils.fileExist(PathUtils.getSrcPath(getPluginPath(), "android"))) {
+                    displayLog.setText("插件添加平台已经执行\n" + result);
+
+                } else {
+                    displayLog.setText("插件添加平台生成失败\t" + result);
+                }
             }
         }.start();
     }
 
     @FXML
     public void testPlugin() {
-            new CustomThread() {
-                @Override
-                protected void reallyRun() {
-
-                }
-            }.start();
+        LogUtils.d("暂时不实现");
     }
 }

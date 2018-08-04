@@ -1,4 +1,4 @@
-package main.utils;
+package application.utils;
 
 import java.io.File;
 
@@ -51,17 +51,47 @@ public class FileUtils {
 
     /**
      * 删除单个文件
-     * @param   sPath    被删除文件的文件名
+     *
+     * @param sPath 被删除文件的文件名
      * @return 单个文件删除成功返回true，否则返回false
      */
     public static boolean deleteFile(String sPath) {
-      boolean  flag = false;
-      File  file = new File(sPath);
+        boolean flag = false;
+        File file = new File(sPath);
         // 路径为文件且不为空则进行删除
         if (file.isFile() && file.exists()) {
             file.delete();
             flag = true;
         }
         return flag;
+    }
+
+    /**
+     * 判断文件是否存在并是有数据的<检查执行命令是否已完成>
+     *
+     * @param path 文件路径
+     * @return 判断文件是否存在并是有数据的
+     */
+    public static boolean fileExist(String path) {
+        File file = new File(path);
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File aFile : files) {
+                    if (aFile.length() > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } else if(file.isFile()&&file.length()>0){
+                return true;
+            }else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package main.utils;
+package application.utils;
 
 import javafx.scene.control.TextField;
 
@@ -25,7 +25,7 @@ public class TextUtils {
 
 
     public static boolean isEmpty(String content) {
-        return content != null && content.length() > 0;
+        return !(content != null && content.length() > 0);
     }
 
 }

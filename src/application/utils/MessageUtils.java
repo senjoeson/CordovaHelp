@@ -1,4 +1,4 @@
-package main.utils;
+package application.utils;
 
 import javafx.scene.control.Alert;
 
@@ -17,7 +17,7 @@ public class MessageUtils {
 
 
     public static void showMessage(String message) {
-        mAlert = new Alert(Alert.AlertType.INFORMATION, message);
+        mAlert = new Alert(Alert.AlertType.WARNING, message);
         mAlert.setTitle("消息提示:");
         mAlert.show();
     }

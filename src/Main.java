@@ -1,3 +1,8 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import application.utils.LogUtils;
+import application.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,28 +13,33 @@ import javafx.stage.Stage;
 public class Main extends Application implements Thread.UncaughtExceptionHandler {
     private String[] classNameFilters = new String[]{"com.sun", "java."};       //过滤系统的类错误
 
+
+
     @Override
     public void init() throws Exception {
         Thread.setDefaultUncaughtExceptionHandler(this);
         super.init();
-
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        LogUtils.d("--------" + dateFormat.format(date) + "---------");
+        LogUtils.d("程序入口初始化");
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("res/layout/main.fxml"));
-        primaryStage.setTitle("插件制作工具v1.0");
+        primaryStage.setTitle(Config.APP_NAME + Config.APP_VERSION);
         //Bounds layoutBounds = root.getLayoutBounds();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 900, 800));
+        primaryStage.setScene(new Scene(root, 820, 760));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        launch(args );
 
+        launch(args);
 
     }
 

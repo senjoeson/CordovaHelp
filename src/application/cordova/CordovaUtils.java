@@ -1,9 +1,9 @@
-package main.cordova;
+package application.cordova;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.dos.DosUtils;
+import application.dos.DosUtils;
 
 /**
  * @author MyPC
@@ -27,20 +27,6 @@ public class CordovaUtils {
         commands.add(packageName);
         return DosUtils.runCmd(commands);
     }
-
-    /**
-
-     * @param moduleName  项目名称
-     * @param packageName 包名
-     * @return 拿到执行命令
-    public static List<String> createCordova(String rootPath, String moduleName, String packageName) {
-    ArrayList<String> commands = new ArrayList<String>();
-    commands.add("C:\\Users\\MyPC\\AppData\\Roaming\\npm\\node_modules\\cordova\\bin\\cordova.cmd");
-    commands.add("create");
-    commands.add(rootPath + "\\" + moduleName);
-    commands.add(packageName);
-    return commands;
-    }*/
 
 
     /**
@@ -76,33 +62,44 @@ public class CordovaUtils {
 
     }
 
+
+
     /**
-     * 暂时不对外提供
-     *
-     * @return
+     * 显示当前Cordova项目的插件列表
      */
-    private static String stopAllOrder() {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("pause");
-        return DosUtils.runCmd(commands);
-    }
-
-
-    public static String showPluginList() {
+    public static String showPluginList(String projectPath) {
         ArrayList<String> commands = new ArrayList<>();
         commands.add("cordova.cmd");
         commands.add("plugin");
         commands.add("list");
-        return DosUtils.runCmd(commands);
+        return DosUtils.runCmdByCd(projectPath,commands);
     }
 
-
-    public static String addPlugin(String projectPath, String pluginPaht) {
+    /**
+     * 为平台添加插件
+     * @param projectPath 项目路径
+     * @param pluginPath 插件路径
+     */
+    public static String addPlugin(String projectPath, String pluginPath) {
         ArrayList<String> commands = new ArrayList<>();
         commands.add("cordova.cmd");
         commands.add("plugin");
         commands.add("add");
-        commands.add(pluginPaht);
+        commands.add(pluginPath);
+        return DosUtils.runCmdByCd(projectPath,commands);
+    }
+
+    /**
+     * 移除插件
+     * @param projectPath 项目路径
+     * @param pluginPackage 插件路径
+     */
+    public static String rmPlugin(String projectPath, String pluginPackage) {
+        ArrayList<String> commands = new ArrayList<>();
+        commands.add("cordova.cmd");
+        commands.add("plugin");
+        commands.add("remove");
+        commands.add(pluginPackage);
         return DosUtils.runCmdByCd(projectPath,commands);
     }
 }

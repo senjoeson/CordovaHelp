@@ -1,4 +1,4 @@
-package main.dos;
+package application.dos;
 
 import java.io.BufferedReader;
 import java.io.File;
