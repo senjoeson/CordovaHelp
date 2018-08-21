@@ -38,9 +38,7 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
 
 
     public static void main(String[] args) {
-
         launch(args);
-
     }
 
 

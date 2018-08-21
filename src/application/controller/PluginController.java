@@ -45,6 +45,7 @@ public class PluginController {
     public void setRootPath() {
         //LogUtils.info("设置插件的路径");
         pluginDir = DirectoryWindowsUtils.showDirectoryWindow("选择一个目录来作为插件生成根路径");
+        Tf_pluginDir.setText(pluginDir);
     }
 
     @FXML
