@@ -1,0 +1,40 @@
+
+
+
+.tab-pane{
+    -fx-border-color: aquamarine;
+    -fx-tab-min-height: 30;
+    -fx-border-radius: 6px;
+}
+
+.tab{
+    -fx-progress-color: aquamarine;
+}
+
+/*文字样式*/
+.button:hover{
+  -fx-background-color: aquamarine;
+
+}
+
+/*文字样式*/
+.text-area{
+    -fx-background-color: aquamarine;
+}
+
+.text-field{
+    -fx-progress-color: lightgreen;
+    -fx-border-color: lightgreen;
+}
+
+/*按钮样式*/
+.button{
+    -fx-progress-color: darkseagreen;
+    -fx-border-color: deepskyblue;
+    -fx-border-radius: 4px,4px,4px,4px;
+}
+.label{
+    -fx-font-style: italic;
+    -fx-font-family: Consolas;
+    -fx-font-size: 13px;
+}
