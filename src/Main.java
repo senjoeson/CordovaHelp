@@ -1,8 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import application.utils.LogUtils;
 import application.config.Config;
+import application.utils.LogUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

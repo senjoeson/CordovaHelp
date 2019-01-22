@@ -9,7 +9,7 @@ import java.io.IOException;
 import application.bean.PackageJson;
 
 /**
- * @author MyPC
+ * @author senjoeson
  * @date 2018/7/25
  */
 
@@ -18,7 +18,7 @@ public class WriteUtils {
 
     /**
      * 给插件生成一个package.json
-     *需要配置的 packagename  version  description  enter point
+     *需要配置的 packageName  version  description  enter point
      * @param fileName    文件名
      * @param packageJson 写入内容
      */
@@ -29,11 +29,7 @@ public class WriteUtils {
             String json = gson.toJson(packageJson);
             fileWriter.write(json);
             fileWriter.close();
-            if (FileUtils.fileExist(fileName)) {
-                return true;
-            } else {
-                return false;
-            }
+            return FileUtils.fileExist(fileName);
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -43,8 +39,7 @@ public class WriteUtils {
     /**
      * @param file         写入的文件
      * @param writeContent 写入的内容
-     * @return 执行是否成功
-     * @throws IOException
+     * @return    执行是否成功
      */
     public static boolean writeFile(File file, String writeContent, boolean isAppend) {
         if (file != null) {

@@ -22,9 +22,9 @@ import javafx.scene.control.TextField;
 public class PluginController {
     public ProgressIndicator mProgressIndicator;
     public TextField Tf_pluginDir;
-    public TextField Tf_pluginname;
-    public TextField versionname;
-    public TextField packagename;
+    public TextField Tf_pluginName;
+    public TextField versionName;
+    public TextField packageName;
     public TextArea displayLog;
 
     private String pluginDir;
@@ -37,7 +37,7 @@ public class PluginController {
         if (pluginDir != null && pluginName != null) {
             return pluginDir + "\\" + pluginName;
         } else {
-            return Tf_pluginDir.getText() + "\\" + Tf_pluginname.getText();
+            return Tf_pluginDir.getText() + "\\" + Tf_pluginName.getText();
         }
     }
 
@@ -50,23 +50,23 @@ public class PluginController {
 
     @FXML
     public void generatePlugin() {
-        if (TextUtils.isEmpty(Tf_pluginDir, Tf_pluginname)) {
+        if (TextUtils.isEmpty(Tf_pluginDir, Tf_pluginName)) {
             MessageUtils.showMessage("插件根目录或者插件名称不能为空");
             return;
         }
         pluginDir = Tf_pluginDir.getText();
-        pluginName = Tf_pluginname.getText();
-        if (TextUtils.isEmpty(packagename, versionname)) {
+        pluginName = Tf_pluginName.getText();
+        if (TextUtils.isEmpty(packageName, versionName)) {
             MessageUtils.showMessage("包名或版本名不能为空哦!");
             return;
         }
         new CustomThread() {
             @Override
             protected void reallyRun() {
-                String result = PlugmanUtils.create(pluginDir, pluginName, packagename.getText(), versionname.getText());
+                String result = PlugmanUtils.create(pluginDir, pluginName, packageName.getText(), versionName.getText());
                 if (FileUtils.fileExist(getPluginPath())) {
                     displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
-                    boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
+                    boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionName.getText(), packageName.getText());
                     displayLog.setText(displayLog.getText() + "\n" + "packageJson生成"+(packageJson?"成功":"失败"));
                 } else {
                     displayLog.setText("插件生成失败\t" + result);

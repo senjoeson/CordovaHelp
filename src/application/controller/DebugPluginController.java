@@ -23,8 +23,8 @@ import javafx.scene.control.TextField;
 public class DebugPluginController {
 
 
-    public CheckBox lockproject;
-    public CheckBox lockplugin;
+    public CheckBox lockProject;
+    public CheckBox lockPlugin;
     public TextField tf_projectPath;
     public TextField tf_pluginPath;
     public TextArea displayLog;
@@ -37,12 +37,12 @@ public class DebugPluginController {
 
     @FXML
     public void lockProjectPathInput() {
-        tf_projectPath.setEditable(!lockproject.isSelected());
+        tf_projectPath.setEditable(!lockProject.isSelected());
     }
 
     @FXML
     public void lockPluginPathInput() {
-        tf_pluginPath.setEditable(!lockplugin.isSelected());
+        tf_pluginPath.setEditable(!lockPlugin.isSelected());
     }
 
 

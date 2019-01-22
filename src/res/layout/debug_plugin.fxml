@@ -20,9 +20,9 @@
         <Label layoutX="40.0" layoutY="85.0" prefHeight="22.0" prefWidth="76.0" text="插件目录路径"/>
         <TextArea fx:id="displayLog" editable="false" layoutX="37.0" layoutY="181.0"
                   prefHeight="400" prefWidth="550.0" promptText="执行结果显示区域:"/>
-        <CheckBox fx:id="lockproject" layoutX="510.0" layoutY="49.0" mnemonicParsing="false"
+        <CheckBox fx:id="lockProject" layoutX="510.0" layoutY="49.0" mnemonicParsing="false"
                   onMouseClicked="#lockProjectPathInput" text="是否锁定"/>
-        <CheckBox fx:id="lockplugin" layoutX="510.0" layoutY="119.0" mnemonicParsing="false"
+        <CheckBox fx:id="lockPlugin" layoutX="510.0" layoutY="119.0" mnemonicParsing="false"
                   onMouseClicked="#lockPluginPathInput" text="是否锁定"/>
         <Button layoutX="655.0" layoutY="262.0" mnemonicParsing="false"
                 onMouseClicked="#addPlugin2project" prefHeight="35.0" prefWidth="142.0"
