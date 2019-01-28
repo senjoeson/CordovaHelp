@@ -5,5 +5,5 @@ package application.config;
  */
 public class Config {
     public static final  String  APP_NAME="Cordova插件制作工具";
-    public static final  String  APP_VERSION=" V 1.0.0";
+    public static final  String  APP_VERSION=" V 1.0.1";
 }

@@ -2,33 +2,38 @@
 
 
 .tab-pane{
-    -fx-border-color: aquamarine;
-    -fx-tab-min-height: 30;
+    -fx-border-color: linear-gradient(to left,#00fffc,#fff600);
+    -fx-tab-min-height: 26;
     -fx-border-radius: 6px;
 }
 
 .tab{
-    -fx-progress-color: aquamarine;
+    -fx-progress-color: linear-gradient(to left,#00fffc,#fff600);
 }
 
 /*文字样式*/
 .button:hover{
-  -fx-background-color: aquamarine;
+  -fx-background-color: linear-gradient(to left,#00fffc,#fff600);
 
 }
 
 /*文字样式*/
 .text-area{
-    -fx-background-color: aquamarine;
+    -fx-color-label-visible: #ffffff;
+    -fx-background-color: linear-gradient(to left,#00fffc,#fff600);
 }
 
 .text-field{
-    -fx-progress-color: lightgreen;
-    -fx-border-color: lightgreen;
+    -fx-progress-color: #0080ff;
+    -fx-border-color: linear-gradient(to left,#00fffc,#fff600);
 }
+
+
 
 /*按钮样式*/
 .button{
+    -fx-pref-height: 35;
+    -fx-text-fill: linear-gradient(to left,#00fffc,#fff600);
     -fx-progress-color: darkseagreen;
     -fx-border-color: deepskyblue;
     -fx-border-radius: 4px,4px,4px,4px;

@@ -32,7 +32,7 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
         //Bounds layoutBounds = root.getLayoutBounds();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);
-        Scene scene = new Scene(root, 820, 760);
+        Scene scene = new Scene(root, 820, 711);
         scene.getStylesheets().add(getClass().getResource("res/css/MainStyle.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
