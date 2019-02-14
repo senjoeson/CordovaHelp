@@ -20,9 +20,9 @@ import javafx.scene.control.TextField;
 
 public class ModuleController {
 
-    public TextField modulename;
-    public TextField packagename;
-    public TextField versionname;
+    public TextField moduleName;
+    public TextField packageName;
+    public TextField versionName;
     public TextArea displayLog;
 
 
@@ -47,7 +47,7 @@ public class ModuleController {
         if (rootPath != null && mModuleName != null) {
             return rootPath + "\\" + mModuleName;
         } else {
-            return parentDir.getText() + "\\" + modulename.getText();
+            return parentDir.getText() + "\\" + moduleName.getText();
         }
     }
 
@@ -69,11 +69,11 @@ public class ModuleController {
             MessageUtils.showMessage("根目录不能为空!");
             return;
         }
-        if (TextUtils.isEmpty(modulename, packagename)) {
+        if (TextUtils.isEmpty(moduleName, packageName)) {
             MessageUtils.showMessage("项目名称或包名不能为空!");
         } else {
-            String moduleName = modulename.getText();
-            String packageName = packagename.getText();
+            String moduleName = this.moduleName.getText();
+            String packageName = this.packageName.getText();
             File file = new File(getModulePath());
             if (!file.exists()) {
                 //   List<String> cordovaCreate = ComOrderUtils.createCordova(parentDir.getText(), moduleName, packageName);

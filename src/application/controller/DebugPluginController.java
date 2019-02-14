@@ -1,19 +1,15 @@
 package application.controller;
 
-import com.google.gson.Gson;
-
 import application.bean.PackageJson;
 import application.cordova.CordovaUtils;
-import application.utils.CustomThread;
-import application.utils.LogUtils;
-import application.utils.MessageUtils;
-import application.utils.ReadUtils;
-import application.utils.TextUtils;
+import application.utils.*;
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * @author MyPC
@@ -45,7 +41,11 @@ public class DebugPluginController {
         tf_pluginPath.setEditable(!lockPlugin.isSelected());
     }
 
-
+    /**
+     * 获取插件的包名
+     *
+     * @return
+     */
     public String getPluginPackageName() {
         if (TextUtils.isEmpty(pluginPath) && TextUtils.isEmpty(tf_pluginPath)) {
             MessageUtils.showMessage("插件路径不能为空");
@@ -65,8 +65,8 @@ public class DebugPluginController {
             MessageUtils.showMessage("项目路径或者插件路径不能为空");
             return;
         }
-        mProgressIndicator.setVisible(true);
         getKeyPath();
+        mProgressIndicator.setVisible(true);
         new CustomThread() {
             @Override
             protected void reallyRun() {
@@ -85,9 +85,8 @@ public class DebugPluginController {
             MessageUtils.showMessage("项目路径或者插件路径不能为空");
             return;
         }
-        mProgressIndicator.setVisible(true);
         getKeyPath();
-
+        mProgressIndicator.setVisible(true);
         new CustomThread() {
             @Override
             protected void reallyRun() {
@@ -135,17 +134,19 @@ public class DebugPluginController {
             MessageUtils.showMessage("请先设置一个Cordova项目路径,然后重试");
             return;
         }
+        mProgressIndicator.setVisible(true);
         new CustomThread() {
             @Override
             protected void reallyRun() {
                 String result = CordovaUtils.showPluginList(projectPath);
                 displayLog.setText(result);
+                mProgressIndicator.setVisible(false);
             }
         }.start();
     }
 
     @FXML
-    public void replugin() {
+    public void rePlugin() {
         LogUtils.d("重新集成插件到项目");
         //判断是否设置了Cordova项目
         getKeyPath();
@@ -153,12 +154,33 @@ public class DebugPluginController {
             MessageUtils.showMessage("请先设置一个Cordova项目路径,然后重试");
             return;
         }
+        mProgressIndicator.setVisible(true);
         new CustomThread() {
             @Override
             protected void reallyRun() {
                 displayLog.setText(CordovaUtils.rmPlugin(projectPath, getPluginPackageName()) + "\n" + CordovaUtils.addPlugin(projectPath, pluginPath));
+                mProgressIndicator.setVisible(false);
             }
         }.start();
 
+    }
+
+    @FXML
+    public void removePlugin(MouseEvent mouseEvent) {
+        LogUtils.d("移除集成插件到项目");
+        getKeyPath();
+        if (TextUtils.isEmpty(projectPath)) {
+            MessageUtils.showMessage("请先设置一个Cordova项目路径,然后重试");
+            return;
+        }
+
+        mProgressIndicator.setVisible(true);
+        new CustomThread() {
+            @Override
+            protected void reallyRun() {
+                displayLog.setText(CordovaUtils.rmPlugin(projectPath, getPluginPackageName()));
+                mProgressIndicator.setVisible(false);
+            }
+        }.start();
     }
 }

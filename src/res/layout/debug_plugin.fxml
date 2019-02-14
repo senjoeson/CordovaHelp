@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-
-<Pane prefHeight="712.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DebugPluginController">
+<Pane prefHeight="712.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DebugPluginController">
     <!--text="C:\Users\MyPC\IdeaProjects\TestDemo"-->
-    <TextField fx:id="tf_projectPath" layoutX="40.0" layoutY="59.0" prefHeight="35.0" prefWidth="451.0" promptText="填入Cordova项目的绝对路径" />
-    <TextField fx:id="tf_pluginPath" layoutX="40.0" layoutY="129.0" prefHeight="35.0" prefWidth="451.0" promptText="填入插件的绝对路径" />
-    <Label layoutX="40.0" layoutY="37.0" prefHeight="22.0" prefWidth="110.0" text="Cordova项目路径" /><!--text="C:\Users\MyPC\IdeaProjects\TestPlugin"-->
-    <Label layoutX="40.0" layoutY="105.0" prefHeight="22.0" prefWidth="90.0" text="插件目录路径" />
+    <TextField fx:id="tf_projectPath" layoutX="40.0" layoutY="59.0" prefHeight="35.0" prefWidth="451.0"
+               promptText="填入Cordova项目的绝对路径"/>
+    <TextField fx:id="tf_pluginPath" layoutX="40.0" layoutY="129.0" prefHeight="35.0" prefWidth="451.0"
+               promptText="填入插件的绝对路径"/>
+    <Label layoutX="40.0" layoutY="37.0" prefHeight="22.0" prefWidth="110.0"
+           text="Cordova项目路径"/><!--text="C:\Users\MyPC\IdeaProjects\TestPlugin"-->
+    <Label layoutX="40.0" layoutY="105.0" prefHeight="22.0" prefWidth="90.0" text="插件目录路径"/>
 
-    <Label layoutX="40.0" layoutY="187.0" prefHeight="28.0" prefWidth="153.0" text="日志输出区域:" />
+    <Label layoutX="40.0" layoutY="187.0" prefHeight="28.0" prefWidth="153.0" text="日志输出区域:"/>
 
-    <TextArea fx:id="displayLog" editable="false" layoutX="34.0" layoutY="228.0" prefHeight="400" prefWidth="542.0" promptText="执行结果显示区域:" />
-    <CheckBox fx:id="lockProject" layoutX="510.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#lockProjectPathInput" text="是否锁定" />
-    <CheckBox fx:id="lockPlugin" layoutX="510.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#lockPluginPathInput" text="是否锁定" />
-    <Button defaultButton="true" layoutX="655.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#addPlugin2project" prefHeight="35.0" prefWidth="142.0" text="将插件添加到项目" />
-    <Button defaultButton="true" layoutX="655.0" layoutY="382.0" mnemonicParsing="false" onMouseClicked="#buildProject" prefHeight="35.0" prefWidth="142.0" text="编译Cordova项目" />
-    <Button defaultButton="true" layoutX="652.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#addPlatform" prefHeight="35.0" prefWidth="142.0" text="给Cordova添加平台" textAlignment="JUSTIFY">
+    <TextArea fx:id="displayLog" editable="false" layoutX="34.0" layoutY="228.0" prefHeight="400" prefWidth="542.0"
+              promptText="执行结果显示区域:"/>
+    <CheckBox fx:id="lockProject" layoutX="510.0" layoutY="69.0" mnemonicParsing="false"
+              onMouseClicked="#lockProjectPathInput" text="是否锁定"/>
+    <CheckBox fx:id="lockPlugin" layoutX="510.0" layoutY="139.0" mnemonicParsing="false"
+              onMouseClicked="#lockPluginPathInput" text="是否锁定"/>
+    <Button defaultButton="true" layoutX="655.0" layoutY="285.0" mnemonicParsing="false"
+            onMouseClicked="#addPlugin2project" prefHeight="35.0" prefWidth="142.0" text="将插件添加到项目"/>
+    <Button defaultButton="true" layoutX="655.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#buildProject"
+            prefHeight="35.0" prefWidth="142.0" text="编译Cordova项目"/>
+    <Button defaultButton="true" layoutX="652.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#addPlatform"
+            prefHeight="35.0" prefWidth="142.0" text="给Cordova添加平台" textAlignment="JUSTIFY">
     </Button>
-    <ProgressIndicator fx:id="mProgressIndicator" layoutX="283.0" layoutY="354.0" visible="false" />
-    <Button defaultButton="true" layoutX="652.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#showPluginList" prefHeight="35.0" prefWidth="142.0" text="插件列表显示" />
+    <ProgressIndicator fx:id="mProgressIndicator" layoutX="283.0" layoutY="354.0" visible="false"/>
+    <Button defaultButton="true" layoutX="655.0" layoutY="428.0" mnemonicParsing="false"
+            onMouseClicked="#showPluginList" prefHeight="35.0" prefWidth="142.0" text="插件列表显示"/>
 
-    <Button defaultButton="true" layoutX="652.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#replugin" prefHeight="35.0" prefWidth="142.0" text="重新添加插件" />
+    <Button defaultButton="true" layoutX="655.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#rePlugin"
+            prefHeight="35.0" prefWidth="142.0" text="重新添加插件"/>
+    <Button defaultButton="true" layoutX="655.0" layoutY="566.0" mnemonicParsing="false" prefHeight="35.0" onMouseClicked="#removePlugin"
+            prefWidth="142.0" text="移除插件"/>
 
 
 </Pane>

@@ -1,13 +1,7 @@
 package application.controller;
 
-import application.utils.LogUtils;
 import application.cordova.PlugmanUtils;
-import application.utils.CustomThread;
-import application.utils.DirectoryWindowsUtils;
-import application.utils.FileUtils;
-import application.utils.MessageUtils;
-import application.utils.PathUtils;
-import application.utils.TextUtils;
+import application.utils.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
@@ -66,7 +60,7 @@ public class PluginController {
                 if (FileUtils.fileExist(getPluginPath())) {
                     displayLog.setText("生成插件命令已执行,请前往插件根目录查看\n" + result);
                     boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
-                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成"+(packageJson?"成功":"失败"));
+                    displayLog.setText(displayLog.getText() + "\n" + "packageJson生成" + (packageJson ? "成功" : "失败"));
                 } else {
                     displayLog.setText("插件生成失败\t" + result);
                 }

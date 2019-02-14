@@ -9,7 +9,7 @@
 
 <Pane prefHeight="687.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PluginController">
 
-    <TextField fx:id="Tf_pluginDir" layoutX="32.0" layoutY="54.0" prefHeight="35.0" prefWidth="615.0" promptText="选择一个根目录(作为生成cordova项目的路径)" /> <!--text="C:\Users\MyPC\IdeaProjects"-->
+    <TextField fx:id="Tf_pluginDir" layoutX="32.0" layoutY="54.0" prefHeight="35.0" prefWidth="590.0" promptText="选择一个根目录(作为生成cordova项目的路径)" /> <!--text="C:\Users\MyPC\IdeaProjects"-->
     <Label layoutX="32.0" layoutY="32.0" prefHeight="15.0" prefWidth="147.0" text="设置存放插件的位置" />
     <Button defaultButton="true" layoutX="673.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#setRootPath" prefHeight="38.0" prefWidth="116.0" text="设置插件根目录" />
     <Label layoutX="36.0" layoutY="123.0" prefHeight="28.0" prefWidth="174.0" text="设置插件的名称" />
@@ -18,7 +18,7 @@
     <TextField fx:id="Tf_pluginname" layoutX="36.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：Test" /><!--text="TestPlugin"-->
     <TextField fx:id="versionname" layoutX="479.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：1.0.0" text="1.0.0" />
     <TextField fx:id="packagename" layoutX="262.0" layoutY="160.0" prefHeight="28.0" prefWidth="167.0" promptText="例如：com.senjoeson.test" />  <!--text="com.senjoeson.test"-->
-    <TextArea fx:id="displayLog" editable="false" layoutX="35.0" layoutY="249.0" prefHeight="364.0" prefWidth="569.0" promptText="日志输出区域" />
+    <TextArea fx:id="displayLog" editable="false" layoutX="35.0" layoutY="249.0" prefHeight="364.0" prefWidth="590.0" promptText="日志输出区域" />
     <Label layoutX="35.0" layoutY="215.0" prefHeight="28.0" prefWidth="136.0" text="日志输出区域:" />
     <Button defaultButton="true" layoutX="673.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#generatePlugin" prefHeight="35.0" prefWidth="116.0" text="点击生成插件" />
     <Label alignment="CENTER" layoutX="659.0" layoutY="114.0" prefHeight="90.0" prefWidth="167.0" text="警告:点击生成项目时,如果当前已经存在项目,则会删除已存在的项目, 重新生成新项目" textFill="#d31717" wrapText="true" />

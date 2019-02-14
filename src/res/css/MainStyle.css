@@ -11,9 +11,9 @@
     -fx-progress-color: linear-gradient(to left,#00fffc,#fff600);
 }
 
-/*文字样式*/
+/*按钮放在按钮上的颜色样式*/
 .button:hover{
-  -fx-background-color: linear-gradient(to left,#00fffc,#fff600);
+  -fx-background-color: black;
 
 }
 

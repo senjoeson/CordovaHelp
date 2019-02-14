@@ -28,4 +28,13 @@ public class TextUtils {
         return !(content != null && content.length() > 0);
     }
 
+    public static boolean isEmpty(String... content) {
+        for (String s : content) {
+            if (isEmpty(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

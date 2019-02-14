@@ -2,6 +2,7 @@ package application.utils;
 
 
 import java.io.File;
+import java.nio.charset.Charset;
 
 /**
  * @author MyPC
@@ -36,6 +37,7 @@ public class LogUtils {
 
     public static void writeLog(String message) {
         File file = new File(LOG_FILE);
+
         WriteUtils.writeFile(file, message, file.exists() && file.length() > 0);
     }
 
