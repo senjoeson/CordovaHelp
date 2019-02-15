@@ -1,44 +1,42 @@
-
-
-
-.tab-pane{
-    -fx-border-color: linear-gradient(to left,#00fffc,#fff600);
+/*linear-gradient(to left,#00fffc,#fff600)*/
+.tab-pane {
+    -fx-border-color: linear-gradient(to left, #00fffc, #fff600);
     -fx-tab-min-height: 26;
     -fx-border-radius: 6px;
 }
 
-.tab{
-    -fx-progress-color: linear-gradient(to left,#00fffc,#fff600);
+.tab {
+    -fx-progress-color: linear-gradient(to left, #00fffc, #fff600);
 }
 
 /*按钮放在按钮上的颜色样式*/
-.button:hover{
-  -fx-background-color: black;
+.button:hover {
+    -fx-background-color: white;
 
 }
 
 /*文字样式*/
-.text-area{
+.text-area {
     -fx-color-label-visible: #ffffff;
-    -fx-background-color: linear-gradient(to left,#00fffc,#fff600);
+    -fx-background-color: linear-gradient(to left, #00fffc, #fff600);
 }
 
-.text-field{
+.text-field {
     -fx-progress-color: #0080ff;
-    -fx-border-color: linear-gradient(to left,#00fffc,#fff600);
+    -fx-border-color: linear-gradient(to left, #00fffc, #fff600);
 }
-
 
 
 /*按钮样式*/
-.button{
+.button {
     -fx-pref-height: 35;
-    -fx-text-fill: linear-gradient(to left,#00fffc,#fff600);
+    -fx-text-fill: black;
     -fx-progress-color: darkseagreen;
     -fx-border-color: deepskyblue;
-    -fx-border-radius: 4px,4px,4px,4px;
+    -fx-border-radius: 4px, 4px, 4px, 4px;
 }
-.label{
+
+.label {
     -fx-font-style: italic;
     -fx-font-family: Consolas;
     -fx-font-size: 13px;

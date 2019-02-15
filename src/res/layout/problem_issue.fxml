@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0"
+      prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="application.controller.IssueController">
+    <children>
+        <TextField fx:id="title" layoutX="119.0" layoutY="41.0" prefHeight="32.0" prefWidth="454.0"/>
+        <TextArea fx:id="content" layoutX="120.0" layoutY="103.0" prefHeight="318.0" prefWidth="454.0"/>
+        <Label layoutX="51.0" layoutY="41.0" prefHeight="32.0" prefWidth="60.0" text="反馈问题:"/>
+        <Label layoutX="51.0" layoutY="100.0" prefHeight="32.0" prefWidth="60.0" text="问题描述:"/>
+        <TextField fx:id="email" layoutX="119.0" layoutY="457.0" prefHeight="32.0" prefWidth="454.0"/>
+        <Label layoutX="57.0" layoutY="457.0" prefHeight="32.0" prefWidth="60.0" text="回执邮箱:"/>
+        <Button fx:id="submit" defaultButton="true" layoutX="308.0" layoutY="538.0" mnemonicParsing="false"
+                onMouseClicked="#submitIssue" prefHeight="32.0" prefWidth="76.0" text="提交问题"/>
+        <ProgressIndicator fx:id="mProgressIndicator" layoutX="289.0" layoutY="230.0" prefHeight="65.0" prefWidth="95.0"
+                           visible="false"/>
+
+    </children>
+</Pane>

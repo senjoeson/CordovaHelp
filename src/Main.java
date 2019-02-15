@@ -1,14 +1,19 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import application.http.OkHttpProxyCenter;
+import application.http.ProxyCenterOne;
+import application.http.RealHttpUtils;
 import application.utils.LogUtils;
 import application.config.Config;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
 
 public class Main extends Application implements Thread.UncaughtExceptionHandler {
     private String[] classNameFilters = new String[]{"com.sun", "java."};       //过滤系统的类错误
@@ -27,23 +32,27 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("res/layout/main.fxml"));
+
         primaryStage.setTitle(Config.APP_NAME + Config.APP_VERSION);
-        //Bounds layoutBounds = root.getLayoutBounds();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("res/layout/main.fxml"));
+
+        Parent root =  fxmlLoader.load();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);
         Scene scene = new Scene(root, 820, 711);
         scene.getStylesheets().add(getClass().getResource("res/css/MainStyle.css").toExternalForm());
         primaryStage.setScene(scene);
+
+
+      //  Object controller = fxmlLoader.getController();
         primaryStage.show();
+        RealHttpUtils.chooseProxy(new OkHttpProxyCenter());
 
     }
 
 
     public static void main(String[] args) {
-
         launch(args);
-
     }
 
 

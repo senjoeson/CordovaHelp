@@ -20,8 +20,9 @@ public class CordovaUtils {
      * @param packageName 包名
      */
     public static String create(String rootPath, String moduleName, String packageName) {
-        ArrayList<String> commands = new ArrayList<String>();
-        commands.add("cordova.cmd");
+        List<String> commands = new ArrayList<String>();
+        //  commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("create");
         commands.add(rootPath + "\\" + moduleName);
         commands.add(packageName);
@@ -38,7 +39,8 @@ public class CordovaUtils {
     public static String addPlatform(String modulePath, String platformName) {
         //切换项目路径，然后执行添加平台操作
         List<String> commands = new ArrayList<String>();
-        commands.add("cordova.cmd");
+        //  commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("platform");
         commands.add("add");
         commands.add(platformName);
@@ -55,7 +57,8 @@ public class CordovaUtils {
      */
     public static String runAndroid(String modulePath, String platform) {
         List<String> commands = new ArrayList<String>();
-        commands.add("cordova.cmd");
+        //commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("run");
         commands.add(platform);
         return DosUtils.runCmdByCd(modulePath, commands);
@@ -67,8 +70,9 @@ public class CordovaUtils {
      * 显示当前Cordova项目的插件列表
      */
     public static String showPluginList(String projectPath) {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("cordova.cmd");
+        List<String> commands = new ArrayList<>();
+        //  commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("plugin");
         commands.add("list");
         return DosUtils.runCmdByCd(projectPath, commands);
@@ -81,8 +85,9 @@ public class CordovaUtils {
      * @param pluginPath  插件路径
      */
     public static String addPlugin(String projectPath, String pluginPath) {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("cordova.cmd");
+        List<String> commands = new ArrayList<>();
+        //  commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("plugin");
         commands.add("add");
         commands.add(pluginPath);
@@ -96,11 +101,33 @@ public class CordovaUtils {
      * @param pluginPackage 插件路径
      */
     public static String rmPlugin(String projectPath, String pluginPackage) {
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("cordova.cmd");
+        List<String> commands = new ArrayList<>();
+        //   commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
         commands.add("plugin");
         commands.add("remove");
         commands.add(pluginPackage);
         return DosUtils.runCmdByCd(projectPath, commands);
+    }
+
+    /**
+     * 通过判断系统 调整命令
+     *
+     * @param commands
+     * @return
+     */
+    public static List<String> judgeRunPlatform(List<String> commands) {
+        String osName = System.getProperty("os.name");
+        if (osName.startsWith("Mac OS")) {
+            // 苹果
+            commands.add("cordova");
+        } else if (osName.startsWith("Windows")) {
+            // windows
+            commands.add("cordova.cmd");
+        } else {
+            commands.add("cordova");
+
+        }
+        return commands;
     }
 }

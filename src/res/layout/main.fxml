@@ -22,5 +22,12 @@
             <fx:include source="generate_plugin.fxml"/>
         </content>
     </Tab>
+    <Tab text="问题反馈">
+        <content>
+            <fx:include source="problem_issue.fxml"/>
+
+        </content>
+
+    </Tab>
 
 </TabPane>

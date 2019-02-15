@@ -11,7 +11,8 @@
                promptText="填入插件的绝对路径"/>
     <Label layoutX="40.0" layoutY="37.0" prefHeight="22.0" prefWidth="110.0"
            text="Cordova项目路径"/><!--text="C:\Users\MyPC\IdeaProjects\TestPlugin"-->
-    <Label layoutX="40.0" layoutY="105.0" prefHeight="22.0" prefWidth="90.0" text="插件目录路径"/>
+    <Label layoutX="40.0" layoutY="105.0" prefHeight="22.0" prefWidth="90.0" text="插件目录路径" />
+
 
     <Label layoutX="40.0" layoutY="187.0" prefHeight="28.0" prefWidth="153.0" text="日志输出区域:"/>
 
@@ -34,8 +35,8 @@
 
     <Button defaultButton="true" layoutX="655.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#rePlugin"
             prefHeight="35.0" prefWidth="142.0" text="重新添加插件"/>
-    <Button defaultButton="true" layoutX="655.0" layoutY="566.0" mnemonicParsing="false" prefHeight="35.0" onMouseClicked="#removePlugin"
-            prefWidth="142.0" text="移除插件"/>
+    <Button defaultButton="true" layoutX="655.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#removePlugin"
+            prefHeight="35.0" prefWidth="142.0" text="移除插件"/>
 
 
 </Pane>

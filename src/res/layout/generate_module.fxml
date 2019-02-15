@@ -18,13 +18,13 @@
                 <Font size="13.0"/>
             </font>
         </Label>
-        <Label layoutX="244.0" layoutY="120.0" prefHeight="28.0" prefWidth="167.0" text="设置包名:(必填)" wrapText="true"/>
-        <Label layoutX="448.0" layoutY="123.0" text="设置版本号:(选填)"/>
+        <Label layoutX="227.0" layoutY="124.0" prefHeight="28.0" prefWidth="167.0" text="设置包名:(必填)" wrapText="true"/>
+        <Label layoutX="419.0" layoutY="131.0" text="设置版本号:(选填)"/>
         <TextField fx:id="moduleName" layoutX="36.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0"
                    promptText="例如: TestDemo"/> <!--Test"text="" -->
-        <TextField fx:id="versionName" layoutX="448.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0"
+        <TextField fx:id="versionName" layoutX="419.0" layoutY="157.0" prefHeight="28.0" prefWidth="167.0"
                    promptText="例如：1.0.0" text="1.0.0"/>
-        <TextField fx:id="packageName" layoutX="244.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0"
+        <TextField fx:id="packageName" layoutX="227.0" layoutY="157.0" prefHeight="28.0" prefWidth="167.0"
                    promptText="例如：com.senjoeson.test"/><!--text="com.senjoeson.test"-->
         <TextArea fx:id="displayLog" editable="false" layoutX="35.0" layoutY="249.0" prefHeight="400" prefWidth="550.0"
                   promptText="日志输出区域"/>
