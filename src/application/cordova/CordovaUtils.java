@@ -1,9 +1,9 @@
 package application.cordova;
 
-import application.dos.DosUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import application.dos.DosUtils;
 
 /**
  * @author MyPC
@@ -130,4 +130,6 @@ public class CordovaUtils {
         }
         return commands;
     }
+
+
 }

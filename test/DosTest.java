@@ -1,11 +1,11 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import application.dos.DosUtils;
 
 /**
  * @author MyPC
@@ -16,36 +16,12 @@ public class DosTest {
 
 
     public static void main(String[] args) {
-        String modulePath = "C:\\Users\\MyPC\\IdeaProjects\\TestPlugin";
-        StringBuilder result = new StringBuilder();
-        ArrayList<String> commands = new ArrayList<>();
-        commands.add("npm.cmd");
-        commands.add("init");
-        commands.add("\n");
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("cordova.cmd");
+        //strings.add("node");
+        strings.add("-v");
+        DosUtils.runCmd(strings);
 
-        try {
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            Map<String, String> environment = processBuilder.environment();
-            environment.putAll(System.getenv());
-            processBuilder.command(commands);
-            File file = new File(modulePath);
-            if (!file.exists()) {
-                boolean mkdirs = file.mkdirs();
-            }
-            processBuilder.directory(file);
-            processBuilder.redirectErrorStream(true);
-            Process process = processBuilder.start();
-            readExecuteResult(result, processBuilder, process);
-            writeOrder(process);
-            int exit = process.exitValue();
-            if (exit != 0) {
-                System.out.println("failed to execute:" + processBuilder.command() + " with result:" + result);
-            } else {
-                System.out.println(result);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 

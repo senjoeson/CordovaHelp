@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import application.cordova.CordovaUtils;
 
 /**
  * @author MyPC
@@ -109,6 +112,15 @@ public class DosUtils {
         } else {
             return "程序已经执行完成!";
         }
+    }
+
+
+    public static boolean existCordova() {
+        ArrayList<String> strings = new ArrayList<>();
+        List<String> stringList = CordovaUtils.judgeRunPlatform(strings);
+        stringList.add("help");
+        String runCmd = runCmd(strings);
+       return  false;
     }
 
 }

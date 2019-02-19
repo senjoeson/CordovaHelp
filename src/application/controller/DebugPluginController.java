@@ -1,14 +1,29 @@
 package application.controller;
 
+import com.google.gson.Gson;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
+
 import application.bean.PackageJson;
 import application.cordova.CordovaUtils;
-import application.utils.*;
-import com.google.gson.Gson;
+import application.utils.CustomThread;
+import application.utils.LogUtils;
+import application.utils.MessageUtils;
+import application.utils.ReadUtils;
+import application.utils.TextUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -16,7 +31,7 @@ import javafx.scene.input.MouseEvent;
  * @date 2018/7/20
  */
 
-public class DebugPluginController {
+public class DebugPluginController implements Initializable {
 
 
     public CheckBox lockProject;
@@ -25,6 +40,8 @@ public class DebugPluginController {
     public TextField tf_pluginPath;
     public TextArea displayLog;
     public ProgressIndicator mProgressIndicator;
+    public Button btnAddPlatform;
+    public Button btnReAddPlugin;
 
 
     private String projectPath;
@@ -32,13 +49,28 @@ public class DebugPluginController {
     private String pluginPackageName;
 
     @FXML
-    public void lockProjectPathInput() {
+    public void lockProjectPathInput() throws IOException, BackingStoreException {
         tf_projectPath.setEditable(!lockProject.isSelected());
+        if (lockProject.isSelected() && !tf_projectPath.getText().isEmpty()) {
+            //记录本次设置
+            Preferences preferences = Preferences.userRoot();
+            preferences.put("projectPath", tf_projectPath.getText());
+            FileOutputStream outputStream = new FileOutputStream("config.xml");
+            preferences.exportNode(outputStream);
+        }
     }
 
     @FXML
-    public void lockPluginPathInput() {
+    public void lockPluginPathInput() throws IOException, BackingStoreException {
         tf_pluginPath.setEditable(!lockPlugin.isSelected());
+
+        if (lockPlugin.isSelected() && !tf_pluginPath.getText().isEmpty()) {
+            Preferences preferences = Preferences.userRoot();
+            preferences.put("pluginPath", tf_pluginPath.getText());
+            FileOutputStream outputStream = new FileOutputStream("config.xml");
+            preferences.exportNode(outputStream);
+
+        }
     }
 
     /**
@@ -182,5 +214,27 @@ public class DebugPluginController {
                 mProgressIndicator.setVisible(false);
             }
         }.start();
+    }
+
+    public void clearLog(MouseEvent mouseEvent) {
+        displayLog.clear();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //设置初始化值
+        Preferences preferences = Preferences.userRoot();
+        String projectPath = preferences.get("projectPath", "");
+        String pluginPath = preferences.get("pluginPath", "");
+        if (!TextUtils.isEmpty(projectPath)) {
+            tf_projectPath.setText(projectPath);
+        }
+        if (!TextUtils.isEmpty(pluginPath)) {
+            tf_pluginPath.setText(pluginPath);
+        }
+        btnAddPlatform.setTooltip(new Tooltip("目前仅支持android"));
+        btnReAddPlugin.setTooltip(new Tooltip("移除后再添加插件"));
+        lockProject.setTooltip(new Tooltip("点击锁定后,会路径保存在本地."));
+        lockPlugin.setTooltip(new Tooltip("点击锁定后,会路径保存在本地."));
     }
 }
