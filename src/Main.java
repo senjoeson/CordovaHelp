@@ -42,7 +42,15 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
 
         primaryStage.show();
         RealHttpUtils.chooseProxy(new OkHttpProxyCenter());
+      //  showCheckEnv();
 
+    }
+
+    /**
+     *检测环境
+     * @throws java.io.IOException
+     */
+    private void showCheckEnv() throws java.io.IOException {
         //创建一个检测环境
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("res/layout/conf_environment.fxml"));

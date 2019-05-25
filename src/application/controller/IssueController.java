@@ -1,16 +1,21 @@
 package application.controller;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+
 import application.bean.BaseResponse;
 import application.http.CallBack;
 import application.http.RealHttpUtils;
 import application.utils.LogUtils;
 import application.utils.MessageUtils;
 import application.utils.TextUtils;
-import com.google.gson.Gson;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-import java.util.HashMap;
 
 public class IssueController {
 
@@ -46,7 +51,6 @@ public class IssueController {
         RealHttpUtils.getInstance().post(BASE_URL + "/mail/sendMail", hashMap, new CallBack() {
             @Override
             public void onSuccess(String result) {
-
                 BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
                 if ("200".equals(response.getReturnCode())) {
                     title.clear();

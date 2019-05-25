@@ -43,7 +43,7 @@ public class ModuleController {
      *
      * @return
      */
-        public String getModulePath() {
+    public String getModulePath() {
         if (rootPath != null && mModuleName != null) {
             return rootPath + "\\" + mModuleName;
         } else {
@@ -64,48 +64,46 @@ public class ModuleController {
 
     @FXML
     public void generateModule() {
-        mProgressIndicator.setVisible(true);
         if (TextUtils.isEmpty(parentDir)) {
             MessageUtils.showMessage("根目录不能为空!");
             return;
         }
         if (TextUtils.isEmpty(moduleName, packageName)) {
             MessageUtils.showMessage("项目名称或包名不能为空!");
-        } else {
-            String moduleName = this.moduleName.getText();
-            String packageName = this.packageName.getText();
-            File file = new File(getModulePath());
-            if (!file.exists()) {
-                //   List<String> cordovaCreate = ComOrderUtils.createCordova(parentDir.getText(), moduleName, packageName);
-                mThread = new CustomThread() {
-                    @Override
-                    protected void reallyRun() {
-                        String runCmd = CordovaUtils.create(parentDir.getText(), moduleName, packageName);
-                        displayLog.setText(runCmd);
-                        mProgressIndicator.setVisible(false);
-                    }
-                };
-                mThread.start();
-            } else {
-                boolean delAllFile = FileUtils.deleteDirectory(getModulePath());
-                if (delAllFile) {
-                    new Thread(() -> {
-                        String runCmd = CordovaUtils.create(parentDir.getText(), moduleName, packageName);
-                        displayLog.setText(runCmd);
-                        mProgressIndicator.setVisible(false);
-                    }).start();
-
-                } else {
-                    displayLog.setText("您选择的目录已存在该项目");
+            return;
+        }
+        mProgressIndicator.setVisible(true);
+        String moduleName = this.moduleName.getText();
+        String packageName = this.packageName.getText();
+        File file = new File(getModulePath());
+        if (!file.exists()) {
+            //   List<String> cordovaCreate = ComOrderUtils.createCordova(parentDir.getText(), moduleName, packageName);
+            mThread = new CustomThread() {
+                @Override
+                protected void reallyRun() {
+                    String runCmd = CordovaUtils.create(parentDir.getText(), moduleName, packageName);
+                    displayLog.setText(runCmd);
                     mProgressIndicator.setVisible(false);
                 }
+            };
+            mThread.start();
+        } else {
+            boolean delAllFile = FileUtils.deleteDirectory(getModulePath());
+            if (delAllFile) {
+                new Thread(() -> {
+                    String runCmd = CordovaUtils.create(parentDir.getText(), moduleName, packageName);
+                    displayLog.setText(runCmd);
+                    mProgressIndicator.setVisible(false);
+                }).start();
+
+            } else {
+                displayLog.setText("您选择的目录已存在该项目");
+                mProgressIndicator.setVisible(false);
             }
-
-
         }
 
-    }
 
+    }
 
 
     /**
@@ -114,7 +112,7 @@ public class ModuleController {
     @FXML
     public void addPlatform() {
         if (getModulePath() == null) {
-            MessageUtils.showMessage("请先生成一个Cordova项目");
+            MessageUtils.showMessage("未检测到Cordova项目");
             return;
         }
         mProgressIndicator.setVisible(true);
@@ -122,7 +120,7 @@ public class ModuleController {
             @Override
             protected void reallyRun() {
                 String result = CordovaUtils.addPlatform(getModulePath(), "android");
-                displayLog.setText( result);
+                displayLog.setText(result);
                 mProgressIndicator.setVisible(false);
             }
         };
@@ -153,7 +151,7 @@ public class ModuleController {
             protected void reallyRun() {
                 mProgressIndicator.setVisible(true);
                 String result = CordovaUtils.runAndroid("C:\\Users\\MyPC\\IdeaProjects\\TestDemo", "android");
-                displayLog.setText( result);
+                displayLog.setText(result);
                 mProgressIndicator.setVisible(false);
             }
         };
@@ -164,7 +162,7 @@ public class ModuleController {
     @FXML
     public void stopRunAnyOrder() {
         //mThread.stopTask();
-       // String result = DosUtils.stopMyOrder();
+        // String result = DosUtils.stopMyOrder();
         //displayLog.setText(displayLog.getText() + "\n" + result);
     }
 }

@@ -1,15 +1,20 @@
 package application.http;
 
 import com.google.gson.Gson;
-import okhttp3.*;
 
 import java.net.Proxy;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
 /**
- * 中介2
+ * 采用代理模式 ----网络请求
  */
 public class OkHttpProxyCenter implements IProxyCenter {
 
