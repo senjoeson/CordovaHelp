@@ -11,7 +11,7 @@
 
     <TextField fx:id="Tf_pluginDir" layoutX="32.0" layoutY="54.0" prefHeight="35.0" prefWidth="590.0" promptText="选择一个根目录(作为生成cordova项目的路径)" /> <!--text="C:\Users\MyPC\IdeaProjects"-->
     <Label layoutX="32.0" layoutY="32.0" prefHeight="15.0" prefWidth="147.0" text="设置存放插件的位置" />
-    <Button defaultButton="true" layoutX="673.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#setRootPath" prefHeight="38.0" prefWidth="116.0" text="设置插件根目录" />
+    <Button fx:id="openChooseFile" defaultButton="true" layoutX="673.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#setRootPath" prefHeight="38.0" prefWidth="116.0" text="设置插件根目录" />
     <Label layoutX="36.0" layoutY="123.0" prefHeight="28.0" prefWidth="174.0" text="设置插件的名称" />
     <Label layoutX="229.0" layoutY="123.0" prefHeight="28.0" prefWidth="147.0" text="设置插件包名:(必填)" />
     <Label layoutX="415.0" layoutY="131.0" prefHeight="15.0" prefWidth="160.0" text="设置版本号:(选填)" />

@@ -1,45 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0"
-      prefWidth="821.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+<Pane maxHeight="-Infinity"
+      maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="712.0"
+      prefWidth="821.0"
+      xmlns="http://javafx.com/javafx/8.0.172-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="application.controller.ModuleController">
+
     <children>
-        <TextField fx:id="parentDir" layoutX="36.0" layoutY="59.0" prefHeight="35.0" prefWidth="550.0"
-                   promptText="选择一个根目录(作为生成cordova项目的路径)"/><!--text="C:\Users\MyPC\IdeaProjects" -->
-        <Label layoutX="36.0" layoutY="26.0" prefHeight="28.0" prefWidth="167.0" text="设置项目根目录" wrapText="true"/>
-        <Button defaultButton="true" layoutX="673.0" layoutY="54.0" mnemonicParsing="false"
-                onMouseClicked="#setParentDir" prefHeight="38.0" prefWidth="116.0" text="设置项目根目录"/>
-        <Label layoutX="36.0" layoutY="123.0" prefHeight="28.0" prefWidth="200.0" text="设置Cordova项目名称:(必填)"
-               textAlignment="CENTER" wrapText="true">
+
+        <TextField
+            fx:id="parentDir"
+            layoutX="36.0"
+            layoutY="59.0"
+            prefHeight="35.0"
+            prefWidth="550.0"
+            promptText="选择一个根目录(作为生成cordova项目的路径)"/><!--text="C:\Users\MyPC\IdeaProjects" -->
+        <Label
+            layoutX="36.0"
+            layoutY="26.0"
+            prefHeight="28.0"
+            prefWidth="167.0"
+            text="设置项目根目录"
+            wrapText="true"/>
+
+        <Button
+            fx:id="openChooseFile"
+            defaultButton="true"
+            layoutX="673.0"
+            layoutY="54.0"
+            mnemonicParsing="false"
+            onMouseClicked="#setParentDir"
+            prefHeight="38.0"
+            prefWidth="116.0"
+            text="设置项目根目录"/>
+
+        <Label
+            layoutX="36.0"
+            layoutY="123.0"
+            prefHeight="28.0"
+            prefWidth="200.0"
+            text="设置Cordova项目名称:(必填)"
+            textAlignment="CENTER"
+            wrapText="true">
+
             <font>
+
                 <Font size="13.0"/>
             </font>
         </Label>
-        <Label layoutX="227.0" layoutY="124.0" prefHeight="28.0" prefWidth="167.0" text="设置包名:(必填)" wrapText="true"/>
-        <Label layoutX="419.0" layoutY="131.0" text="设置版本号:(选填)"/>
-        <TextField fx:id="moduleName" layoutX="36.0" layoutY="159.0" prefHeight="28.0" prefWidth="167.0"
-                   promptText="例如: TestDemo"/> <!--Test"text="" -->
-        <TextField fx:id="versionName" layoutX="419.0" layoutY="157.0" prefHeight="28.0" prefWidth="167.0"
-                   promptText="例如：1.0.0" text="1.0.0"/>
-        <TextField fx:id="packageName" layoutX="227.0" layoutY="157.0" prefHeight="28.0" prefWidth="167.0"
-                   promptText="例如：com.senjoeson.test"/><!--text="com.senjoeson.test"-->
-        <TextArea fx:id="displayLog" editable="false" layoutX="35.0" layoutY="249.0" prefHeight="400" prefWidth="550.0"
-                  promptText="日志输出区域"/>
-        <Label layoutX="35.0" layoutY="215.0" prefHeight="28.0" prefWidth="153.0" text="日志输出区域:"/>
-        <Button defaultButton="true" layoutX="665.0" layoutY="265.0" mnemonicParsing="false"
-                onMouseClicked="#generateModule" prefHeight="45.0" prefWidth="116.0" text="点击生成项目"/>
-        <Label alignment="CENTER" layoutX="632.0" layoutY="128.0" prefHeight="90.0" prefWidth="167.0"
-               text="警告:点击生成项目时,如果当前已经存在项目,则会删除已存在的项目, 重新生成新项目" textFill="#d31717" wrapText="true"/>
-        <Button defaultButton="true" layoutX="665.0" layoutY="358.0" mnemonicParsing="false"
-                onMouseClicked="#addPlatform" prefHeight="45.0" prefWidth="116.0" text="为项目添加平台"/>
-        <ProgressIndicator fx:id="mProgressIndicator" layoutX="295.0" layoutY="445.0" prefHeight="65.0" prefWidth="95.0"
-                           visible="false"/>
-        <Button defaultButton="true" layoutX="665.0" layoutY="454.0" mnemonicParsing="false"
-                onMouseClicked="#testProject" prefHeight="45.0" prefWidth="116.0" text="测试项目"/>
-        <Button defaultButton="true" disable="true" layoutX="665.0" layoutY="553.0" mnemonicParsing="false"
-                onMouseClicked="#stopRunAnyOrder" prefHeight="45.0" prefWidth="116.0" text="终止任何命令"/>
+
+        <Label
+            layoutX="227.0"
+            layoutY="124.0"
+            prefHeight="28.0"
+            prefWidth="167.0"
+            text="设置包名:(必填)"
+            wrapText="true"/>
+
+        <Label
+            layoutX="419.0"
+            layoutY="131.0"
+            text="设置版本号:(选填)"/>
+
+        <TextField
+            fx:id="moduleName"
+            layoutX="36.0"
+            layoutY="159.0"
+            prefHeight="28.0"
+            prefWidth="167.0"
+            promptText="例如: TestDemo"/> <!--Test"text="" -->
+        <TextField
+            fx:id="versionName"
+            layoutX="419.0"
+            layoutY="157.0"
+            prefHeight="28.0"
+            prefWidth="167.0"
+            promptText="例如：1.0.0"
+            text="1.0.0"/>
+
+        <TextField
+            fx:id="packageName"
+            layoutX="227.0"
+            layoutY="157.0"
+            prefHeight="28.0"
+            prefWidth="167.0"
+            promptText="例如：com.senjoeson.test"/><!--text="com.senjoeson.test"-->
+        <TextArea
+            fx:id="displayLog"
+            editable="false"
+            layoutX="35.0"
+            layoutY="249.0"
+            prefHeight="400"
+            prefWidth="550.0"
+            promptText="日志输出区域"/>
+
+        <Label
+            layoutX="35.0"
+            layoutY="215.0"
+            prefHeight="28.0"
+            prefWidth="153.0"
+            text="日志输出区域:"/>
+
+        <Button
+            defaultButton="true"
+            layoutX="665.0"
+            layoutY="265.0"
+            mnemonicParsing="false"
+            onMouseClicked="#generateModule"
+            prefHeight="45.0"
+            prefWidth="116.0"
+            text="点击生成项目"/>
+
+        <Label
+            alignment="CENTER"
+            layoutX="632.0"
+            layoutY="128.0"
+            prefHeight="90.0"
+            prefWidth="167.0"
+            text="警告:点击生成项目时,如果当前已经存在项目,则会删除已存在的项目, 重新生成新项目"
+            textFill="#d31717"
+            wrapText="true"/>
+
+
+
+        <ProgressIndicator
+            fx:id="mProgressIndicator"
+            layoutX="295.0"
+            layoutY="445.0"
+            prefHeight="65.0"
+            prefWidth="95.0"
+            visible="false"/>
+
+        <Button
+            defaultButton="true"
+            layoutX="665.0"
+            layoutY="478.0"
+            mnemonicParsing="false"
+            onMouseClicked="#testProject"
+            prefHeight="45.0"
+            prefWidth="116.0"
+            text="测试项目"/>
+        <Button
+            defaultButton="true"
+            layoutX="665.0"
+            layoutY="334.0"
+            mnemonicParsing="false"
+            onMouseClicked="#addPlatform"
+            prefHeight="45.0"
+            prefWidth="116.0"
+            text="添加平台"/>
+
+        <Button
+            defaultButton="true"
+            layoutX="665.0"
+            layoutY="404.0"
+            mnemonicParsing="false"
+            onMouseClicked="#rmPlatform"
+            prefHeight="45.0"
+            prefWidth="116.0"
+            text="移除平台"/>
+
+
+        <Button
+            defaultButton="true"
+            disable="true"
+            layoutX="665.0"
+            layoutY="553.0"
+            mnemonicParsing="false"
+            onMouseClicked="#stopRunAnyOrder"
+            prefHeight="45.0"
+            prefWidth="116.0"
+            text="终止任何命令"
+            visible="false"/>
+
+
     </children>
 </Pane>

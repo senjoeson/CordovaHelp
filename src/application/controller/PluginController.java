@@ -3,6 +3,7 @@ package application.controller;
 import application.cordova.PlugmanUtils;
 import application.utils.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,6 +21,7 @@ public class PluginController {
     public TextField versionname;
     public TextField packagename;
     public TextArea displayLog;
+    public Button openChooseFile;
 
     private String pluginDir;
     private String pluginName;
@@ -38,7 +40,7 @@ public class PluginController {
     @FXML
     public void setRootPath() {
         //LogUtils.info("设置插件的路径");
-        pluginDir = DirectoryWindowsUtils.showDirectoryWindow("选择一个目录来作为插件生成根路径");
+        pluginDir = DirectoryWindowsUtils.showDirectoryWindow(openChooseFile,"选择一个目录来作为插件生成根路径");
     }
 
     @FXML

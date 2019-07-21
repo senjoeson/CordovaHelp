@@ -130,6 +130,9 @@ public class DebugPluginController implements Initializable {
 
     }
 
+    /**
+     * 获取关键的路径
+     */
     private void getKeyPath() {
         projectPath = tf_projectPath.getText();
         pluginPath = tf_pluginPath.getText();
@@ -178,7 +181,7 @@ public class DebugPluginController implements Initializable {
     }
 
     @FXML
-    public void rePlugin() {
+    public void reinstallPlugin() {
         LogUtils.d("重新集成插件到项目");
         //判断是否设置了Cordova项目
         getKeyPath();
@@ -233,8 +236,27 @@ public class DebugPluginController implements Initializable {
             tf_pluginPath.setText(pluginPath);
         }
         btnAddPlatform.setTooltip(new Tooltip("目前仅支持android"));
+
         btnReAddPlugin.setTooltip(new Tooltip("移除后再添加插件"));
-        lockProject.setTooltip(new Tooltip("点击锁定后,会路径保存在本地."));
-        lockPlugin.setTooltip(new Tooltip("点击锁定后,会路径保存在本地."));
+        lockProject.setTooltip(new Tooltip("点击锁定后,路径保存在本地."));
+        lockPlugin.setTooltip(new Tooltip("点击锁定后,路径保存在本地."));
+    }
+
+    public void removePlatform(MouseEvent mouseEvent) {
+        LogUtils.d("为项目移除平台操作");
+        if (TextUtils.isEmpty(tf_projectPath, tf_pluginPath)) {
+            MessageUtils.showMessage("项目路径或者插件路径不能为空");
+            return;
+        }
+        getKeyPath();
+        mProgressIndicator.setVisible(true);
+        new CustomThread() {
+            @Override
+            protected void reallyRun() {
+                String result = CordovaUtils.rmPlatform(projectPath, "android");
+                displayLog.setText(result);
+                mProgressIndicator.setVisible(false);
+            }
+        }.start();
     }
 }

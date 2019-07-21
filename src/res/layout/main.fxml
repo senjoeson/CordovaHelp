@@ -7,7 +7,7 @@
          stylesheets="@../css/MainStyle.css"
          xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
 
-    <Tab text="在Cordova项目中调试插件">
+    <Tab text="调试插件">
         <content>
             <fx:include source="debug_plugin.fxml"/>
         </content>

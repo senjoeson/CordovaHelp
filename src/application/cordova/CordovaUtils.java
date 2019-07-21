@@ -51,6 +51,26 @@ public class CordovaUtils {
     }
 
     /**
+     * 移除平台操作
+     * @param modulePath  设置在当前的目录下
+     * @param platformName 平台名称 android ios
+     * @return
+     */
+    public static String rmPlatform(String modulePath, String platformName) {
+        //切换项目路径，然后执行添加平台操作
+        List<String> commands = new ArrayList<String>();
+        //  commands.add("cordova.cmd");
+        commands = judgeRunPlatform(commands);
+        commands.add("platform");
+        commands.add("remove");
+        commands.add(platformName);
+        String runCmd = DosUtils.runCmdByCd(modulePath, commands);
+        System.out.println(runCmd);
+        return runCmd;
+    }
+
+
+    /**
      * @param modulePath 项目的路径
      * @param platform   平台名称,目前仅支持android,ios
      * @return
