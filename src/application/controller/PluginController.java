@@ -1,8 +1,12 @@
 package application.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import application.cordova.PlugmanUtils;
 import application.utils.*;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
@@ -14,7 +18,7 @@ import javafx.scene.control.TextField;
  * function 生成插件的界面控制器
  */
 
-public class PluginController {
+public class PluginController implements Initializable {
     public ProgressIndicator mProgressIndicator;
     public TextField Tf_pluginDir;
     public TextField Tf_pluginname;
@@ -29,12 +33,24 @@ public class PluginController {
     private String platform;
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Tf_pluginDir.setText(PreferenceUtils.getString("plug_dir",""));
+        Tf_pluginname.setText(PreferenceUtils.getString("plug_name",""));
+        packagename.setText(PreferenceUtils.getString("plug_pkg_name",""));
+    }
+
+
     public String getPluginPath() {
+        PreferenceUtils.putString("plug_dir",pluginDir);
+        PreferenceUtils.putString("plug_name",pluginName);
+        PreferenceUtils.putString("plug_pkg_name",packagename.getText().toString());
         if (pluginDir != null && pluginName != null) {
             return pluginDir + "\\" + pluginName;
         } else {
             return Tf_pluginDir.getText() + "\\" + Tf_pluginname.getText();
         }
+
     }
 
     @FXML
@@ -64,7 +80,7 @@ public class PluginController {
                     boolean packageJson = PlugmanUtils.createPackageJson(getPluginPath(), pluginName, versionname.getText(), packagename.getText());
                     displayLog.setText(displayLog.getText() + "\n" + "packageJson生成" + (packageJson ? "成功" : "失败"));
                 } else {
-                    displayLog.setText("插件生成失败\t" + result);
+                    displayLog.setText(displayLog.getText().toString()+ "\n" +"插件生成失败\t" + result);
                 }
             }
         }.start();
@@ -79,10 +95,10 @@ public class PluginController {
                 String result = PlugmanUtils.addPlatform(getPluginPath(), "android");
                 //然后写入一个package.json
                 if (FileUtils.fileExist(PathUtils.getSrcPath(getPluginPath(), "android"))) {
-                    displayLog.setText("插件添加平台已经执行\n" + result);
+                    displayLog.setText(displayLog.getText().toString() + "\n" +"插件添加平台已经执行\n" + result);
 
                 } else {
-                    displayLog.setText("插件添加平台生成失败\t" + result);
+                    displayLog.setText(displayLog.getText().toString()+ "\n" +"插件添加平台生成失败\t" + result);
                 }
             }
         }.start();
@@ -92,4 +108,6 @@ public class PluginController {
     public void testPlugin() {
         LogUtils.d("暂时不实现");
     }
+
+
 }

@@ -1,5 +1,7 @@
 package application.utils;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.prefs.Preferences;
 
 public class PreferenceUtils {
@@ -7,7 +9,38 @@ public class PreferenceUtils {
 
 
     private static Preferences mPreferences = Preferences.userRoot();
-    private static final String CONFIG_NAME = "config.xml";
+    private static final String CONFIG_NAME = "CordovaConfig.xml";
+
+
+    public  static  boolean  putString(String key,String value)  {
+
+        mPreferences.put(key, value);
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(CONFIG_NAME);
+            mPreferences.exportNode(outputStream);
+            return  true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public  static  String  getString(String key,String defValue)  {
+        String result = mPreferences.get(key, defValue);
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(CONFIG_NAME);
+            mPreferences.exportNode(outputStream);
+            return  result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
 
     /*public static <T> void putValue(String key, T object) {
         mPreferences = mPreferences.node("/path");

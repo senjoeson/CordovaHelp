@@ -29,11 +29,7 @@ public class WriteUtils {
             String json = gson.toJson(packageJson);
             fileWriter.write(json);
             fileWriter.close();
-            if (FileUtils.fileExist(fileName)) {
-                return true;
-            } else {
-                return false;
-            }
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
