@@ -2,6 +2,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import application.config.Config;
+import application.http.OkHttpProxyCenter;
+import application.http.RealHttpUtils;
 import application.utils.LogUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+
 public class Main extends Application implements Thread.UncaughtExceptionHandler {
     private String[] classNameFilters = new String[]{"com.sun", "java."};       //过滤系统的类错误
-
 
 
     @Override
@@ -27,13 +29,35 @@ public class Main extends Application implements Thread.UncaughtExceptionHandler
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("res/layout/main.fxml"));
+
         primaryStage.setTitle(Config.APP_NAME + Config.APP_VERSION);
-        //Bounds layoutBounds = root.getLayoutBounds();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("res/layout/main.fxml"));
+
+        Parent root = fxmlLoader.load();
         primaryStage.getIcons().add(new Image("res/drawable/cordova_bot.png"));
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 820, 760));
+        Scene scene = new Scene(root, 820, 711);
+        scene.getStylesheets().add(getClass().getResource("res/css/MainStyle.css").toExternalForm());
+        primaryStage.setScene(scene);
+
         primaryStage.show();
+        RealHttpUtils.chooseProxy(new OkHttpProxyCenter());
+      //  showCheckEnv();
+
+    }
+
+    /**
+     *检测环境
+     * @throws java.io.IOException
+     */
+    private void showCheckEnv() throws java.io.IOException {
+        //创建一个检测环境
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("res/layout/conf_environment.fxml"));
+        Parent load = loader.load();
+        Scene configScene = new Scene(load,600 ,400);
+        stage.setScene(configScene);
+        stage.show();
     }
 
 

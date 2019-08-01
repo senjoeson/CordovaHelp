@@ -18,13 +18,18 @@ public class MessageUtils {
 
     public static void showMessage(String message) {
         mAlert = new Alert(Alert.AlertType.WARNING, message);
-        mAlert.setTitle("消息提示");
+        mAlert.setTitle("消息提示:");
+        mAlert.show();
+    }
+
+    public static void showMessage(String message, Alert.AlertType alertType) {
+        mAlert = new Alert(alertType, message);
+        mAlert.setTitle("消息提示:");
         mAlert.show();
     }
 
     public static void close() {
         if (mAlert != null)
             mAlert.close();
-
     }
 }
