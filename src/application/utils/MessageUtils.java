@@ -22,14 +22,9 @@ public class MessageUtils {
         mAlert.show();
     }
 
-    public static void showMessage(String message, Alert.AlertType alertType) {
-        mAlert = new Alert(alertType, message);
-        mAlert.setTitle("消息提示:");
-        mAlert.show();
-    }
-
     public static void close() {
         if (mAlert != null)
             mAlert.close();
+
     }
 }
