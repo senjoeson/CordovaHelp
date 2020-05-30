@@ -5,7 +5,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import application.dos.DosUtils;
+import com.senjoeson.cordovahelp.dos.DosUtils;
 
 /**
  * @author MyPC
